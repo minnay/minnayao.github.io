@@ -226,3 +226,8 @@ class: middle
 ---
 class: center, middle, inverse
 ![Default-aligned image](pairing/when-you-dont-pair.jpg)
+
+---
+class: center, middle, inverse
+# demo
+
