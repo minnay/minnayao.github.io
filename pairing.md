@@ -137,17 +137,35 @@ class: center, middle, inverse
 # mentor-apprentice
 ![Default-aligned image](pairing/mentor-appretice.jpg)
 
-- unequal access to keyboard and/or screen
+---
+class: center, middle, inverse
+# unequal access to keyboard and/or screen
+![Default-aligned image](pairing/unequal_access_keyboard.jpg)
 
-- keyboard domination
+---
+class: center, middle, inverse
+# keyboard domination
+![Default-aligned image](pairing/furious-typing.jpg)
 
-- pair marriages/no switching during story
+---
+class: center, middle, inverse
+# pair marriages/no switching during story
+![Default-aligned image](pairing/berternie.jpg)
 
-- worker/rester pairing
+---
+class: center, middle, inverse
+# worker/rester pairing
+![Default-aligned image](pairing/pair_programming.jpg)
 
-- 'everyone does their own work'
+---
+class: center, middle, inverse
+# 'everyone does their own work'
+![Default-aligned image](pairing/every_dows_own_work.jpg)
 
-- debates lasting longer than 10 minutes with no new code
+---
+class: center, middle, inverse
+# debates lasting longer than 10 minutes with no new code
+![Default-aligned image](pairing/sbs.jpg)
 
 <!-- But be careful to avoid using the technique in a mentor-apprentice sort of way. -->
 
