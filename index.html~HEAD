@@ -1,3 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Awesome Presentation</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      @import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
 class: center, middle, inverse
 
 # pairing
@@ -137,35 +157,17 @@ class: center, middle, inverse
 # mentor-apprentice
 ![Default-aligned image](pairing/mentor-appretice.jpg)
 
----
-class: center, middle, inverse
-# unequal access to keyboard and/or screen
-![Default-aligned image](pairing/unequal_access_keyboard.jpg)
+- unequal access to keyboard and/or screen
 
----
-class: center, middle, inverse
-# keyboard domination
-![Default-aligned image](pairing/furious-typing.jpg)
+- keyboard domination
 
----
-class: center, middle, inverse
-# pair marriages/no switching during story
-![Default-aligned image](pairing/berternie.jpg)
+- pair marriages/no switching during story
 
----
-class: center, middle, inverse
-# worker/rester pairing
-![Default-aligned image](pairing/pair_programming.jpg)
+- worker/rester pairing
 
----
-class: center, middle, inverse
-# 'everyone does their own work'
-![Default-aligned image](pairing/every_dows_own_work.jpg)
+- 'everyone does their own work'
 
----
-class: center, middle, inverse
-# debates lasting longer than 10 minutes with no new code
-![Default-aligned image](pairing/sbs.jpg)
+- debates lasting longer than 10 minutes with no new code
 
 <!-- But be careful to avoid using the technique in a mentor-apprentice sort of way. -->
 
@@ -187,3 +189,11 @@ class: middle
 ---
 class: center, middle, inverse
 ![Default-aligned image](pairing/when-you-dont-pair.jpg)
+    </textarea>
+    <script src="http://gnab.github.io/remark/downloads/remark-0.5.9.min.js" type="text/javascript">
+    </script>
+    <script type="text/javascript">
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
