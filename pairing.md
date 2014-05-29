@@ -28,7 +28,7 @@ class: center, middle, inverse
 
 ---
 class: center, middle, inverse
-# Why do you love pairing
+# Why do you love pairing?
 
 ---
 class: center, middle, inverse
@@ -64,15 +64,15 @@ class: center, middle, inverse
 
 ---
 class: center, middle, inverse
-# waste of resource
-![Default-aligned image](pairing/muppetspairprogramming.jpg)
-<!-- it isn’t just a technique where one person programs and the other person watches. It’s much slower. Talking through approaches and trying to agree on an implementation takes up a fair amount of time. Sometimes you just want to knuckle down get something done - not gonna happen. Obviously the two people could be programming in parallel on different problems. -->
-
----
-class: center, middle, inverse
 # privacy invasion
 ![Default-aligned image](pairing/arm_placement.png)
 <!-- Sometimes we all need a little space and a little room to breath for whatever reason. It’s hard to get any if you have to pair all day everyday.  -->
+
+---
+class: center, middle, inverse
+# waste of resource
+![Default-aligned image](pairing/muppetspairprogramming.jpg)
+<!-- it isn’t just a technique where one person programs and the other person watches. It’s much slower. Talking through approaches and trying to agree on an implementation takes up a fair amount of time. Sometimes you just want to knuckle down get something done - not gonna happen. Obviously the two people could be programming in parallel on different problems. -->
 
 ---
 class: center, middle, inverse
@@ -198,7 +198,7 @@ class: center, middle, inverse
 
 ---
 class: center, middle, inverse
-# 'everyone does their own work'
+# "everyone does their own work"
 ![Default-aligned image](pairing/every_dows_own_work.jpg)
 
 ---
@@ -213,13 +213,11 @@ class: center, middle, inverse
 # Pair programming is a social skill
 
 ---
-class: middle
+class: middle, middle, inverse
 
-- Realise that it is a hard thing to do!
-
-- Not everyone is born with the skill. You need to learn if you want it to be effective
-
-- It will take time to pay off
+#Realise that it is a hard thing to do! 
+# Not everyone is born with the skill. You need to learn if you want it to be effective. 
+# It will take time to pay off
 
 <!-- it is a cooperative relationship that takes time to hone but ultimately pays off. As one blogger puts it, it’s a social skill that takes some getting used to. But like all acquired skills, once you’ve developed a taste, there’s no turning back. -->
 
@@ -230,4 +228,13 @@ class: center, middle, inverse
 ---
 class: center, middle, inverse
 # demo
+
+---
+class: center, middle, inverse
+![Default-aligned image](pairing/panda-need-hug.jpg)
+
+---
+class: center, middle, inverse
+# Pairing is great, go back to your project and try to pair on your next piece of work!
+
 
