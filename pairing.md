@@ -1,7 +1,8 @@
 class: center, middle, inverse
 
 # pairing
-.footnote[[ThoughtWorks & Wotif]()]
+.footnote[[[ThoughtWorks & Wotif]]()]
+
 <!-- it is primarily used in software development but can also be used in business analysis, writing documentation and etc. It can be used anywhere at all.  It is a very useful practice. -->
 ---
 class: center, middle, inverse
