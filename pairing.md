@@ -10,21 +10,25 @@ class: center, middle, inverse
 
 <!--   Or, one drives and the other navigates, swapping regularly. The motivation is higher quality output from the outset.
 -->
+<!-- 
+
+class: center, middle, inverse
+![Default-aligned image](pairing/software-testing-company-126_2.png) -->
 
 ---
 class: center, middle, inverse
-![Default-aligned image](pairing/software-testing-company-126_2.png)
-
----
-class: center, middle, inverse
-![Default-aligned image](pairing/driving-1.jpg)
+![Default-aligned image](pairing/pairing-driving.png)
 
 <!--  Or, one drives and the other navigates, swapping regularly. The motivation is higher quality output from the outset.
 -->
+---
+class: center, middle, inverse
+# How does it work?
+![Default-aligned image](pairing/how-it-works.png)
 
 ---
 class: center, middle, inverse
-# Why some love it?
+# Why do you love pairing
 
 ---
 class: center, middle, inverse
@@ -52,11 +56,15 @@ class: center, middle, inverse
 
 ---
 class: center, middle, inverse
-# Why some hate it? <!-- Why Does Everyone Hate Pairing -->
+# Killing Me Softly - with this Pair
 
 ---
 class: center, middle, inverse
-# waste of resource?
+# a video https://www.youtube.com/watch?v=IISUO7MzDS0
+
+---
+class: center, middle, inverse
+# waste of resource
 ![Default-aligned image](pairing/muppetspairprogramming.jpg)
 <!-- it isn’t just a technique where one person programs and the other person watches. It’s much slower. Talking through approaches and trying to agree on an implementation takes up a fair amount of time. Sometimes you just want to knuckle down get something done - not gonna happen. Obviously the two people could be programming in parallel on different problems. -->
 
@@ -68,7 +76,7 @@ class: center, middle, inverse
 
 ---
 class: center, middle, inverse
-# sharing is awful; and hygenie!
+# sharing is awful... and hygenie!
 ![Default-aligned image](pairing/pairprogramming-small.png)
 <!-- Sharing computers and desks is awful. What if everyone needs to use the computer at lunch time and there are not enough to go around?1 What if you have carefully configured some apps on one machine but someone else is using it today? -->
 
@@ -95,21 +103,36 @@ class: center, middle, inverse
 ---
 class: center, middle, inverse
 # pairing makes you a better person
-
+![Default-aligned image](pairing/good_people.jpg)
 
 ---
 class: center, middle, inverse
 # Signs to watch out for good pairing
 
 ---
-- greasy finger-marks on the screen and loud conversation <!-- (communication) -->
+class: center, middle, inverse
+# greasy finger-marks on the screen and loud conversation <!-- (communication) -->
+![Default-aligned image](pairing/greasy_finger.png)
 
-- "No, let me show you what I mean." <!-- ( "expert programmer theory" - where the members of the pair perceive each other as knowledgeable problems are solved more effectively)
+---
+class: center, middle, inverse
+# "No, let me show you what I mean."
+
+<!-- ( "expert programmer theory" - where the members of the pair perceive each other as knowledgeable problems are solved more effectively)
  -->
+![Default-aligned image](pairing/let_me_tell_you.jpg)
 
-- "Oh, you’ve left out the comma here" <!-- (Notice More Details. the person who isn’t typing code always picks up typos quicker) -->
+---
+class: center, middle, inverse
+# "Oh, you’ve left out the comma here" 
+<!-- (Notice More Details. the person who isn’t typing code always picks up typos quicker) -->
+![Default-aligned image](pairing/bugs.jpg)
 
-- "Are we heading in the right direction?"
+---
+class: center, middle, inverse
+# "Are we heading in the right direction?"
+![Default-aligned image](pairing/dog passenger.jpg)
+
 
 ---
 class: center, middle, inverse
@@ -119,14 +142,30 @@ class: center, middle, inverse
 ![Default-aligned image](pairing/Pair-Programming.jpg)
 
 ---
+class: center, middle, inverse
+# pomodoro
+![Default-aligned image](pairing/pomodoro.png)
 
-- pomodoro
+---
+class: center, middle, inverse
+# ping-pong
+![Default-aligned image](pairing/pingpong.jpg)
 
-- ping-pong
+---
+class: center, middle, inverse
+# baby steps
+![Default-aligned image](pairing/baby-steps1.jpg)
 
-- parallel pairing
+---
+class: center, middle, inverse
+# parallel pairing (use with caution!)
+![Default-aligned image](pairing/pair-programming-two-computers.jpg)
 
-- baby steps
+---
+class: center, middle, inverse
+# Need rules?
+![Default-aligned image](pairing/pairProgramming_rules.jpg)
+
 
 ---
 class: center, middle, inverse
@@ -165,7 +204,7 @@ class: center, middle, inverse
 ---
 class: center, middle, inverse
 # debates lasting longer than 10 minutes with no new code
-![Default-aligned image](pairing/sbs.jpg)
+![Default-aligned image](pairing/debate.jpg)
 
 <!-- But be careful to avoid using the technique in a mentor-apprentice sort of way. -->
 
@@ -178,7 +217,7 @@ class: middle
 
 - Realise that it is a hard thing to do!
 
-- Not everyone is born with the skill. you need to learn if you want it to be effective
+- Not everyone is born with the skill. You need to learn if you want it to be effective
 
 - It will take time to pay off
 
