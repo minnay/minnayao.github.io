@@ -3,7 +3,21 @@ class: center, middle, inverse
 # pairing
 .footnote[[[ThoughtWorks & Wotif]]()]
 
-<!-- it is primarily used in software development but can also be used in business analysis, writing documentation and etc. It can be used anywhere at all.  It is a very useful practice. -->
+<!-- it is primarily used in software development but can also be used in business analysis, writing documentation and etc. It can be used anywhere at all.  It is a very useful practice. Programming is often something that is done in solitude. Problem solving is something that often is done in a group.  Programming is always about problem solving. It would therefore be natural to do programming in groups. The group must not be too large and there must be at least two persons to make up a reasonable group. A pair turns out as the natural choice.
+
+Some of the benefits with pair programming are 
+Problem solving
+Continuous reviews
+Quality
+Learning
+Lower project risks
+Satisfaction
+
+
+There is also a myth that pair programming is twice as expensive as having one person solve each problem. I will show why this is just a myth and that the actual direct cost has been shown to be 15% higher. I will also follow up and show why the total cost during a computer programs life cycle gets significantly lower with pair programming.
+
+Pair programming is most efficient when the pair sits next to each other. This is not always possible. I will therefore perform a pair programming session with a remote partner to illustrate that it is possible to do pair programming remote.
+-->
 ---
 class: center, middle, inverse
 # What is pair programming?
@@ -147,20 +161,35 @@ class: center, middle, inverse
 # pomodoro
 ![Default-aligned image](pairing/pomodoro.png)
 
+<!-- The Pomodoro Technique is a time management method developed by Francesco Cirillo in the late 1980s.[1] The technique uses a timer to break down work into intervals traditionally 25 minutes in length, separated by short breaks. These intervals are known as "pomodori", the plural of the Italian word pomodoro for "tomato".[2] The method is based on the idea that frequent breaks can improve mental agility.[3][4] -->
+
 ---
 class: center, middle, inverse
 # ping-pong
 ![Default-aligned image](pairing/pingpong.jpg)
+<!-- TDD. We find that this method keeps both programmers in focus (or at least exposes "blackouts" early). -->
 
 ---
 class: center, middle, inverse
 # baby steps
 ![Default-aligned image](pairing/baby-steps1.jpg)
-
+<!-- 
+Setup a timer for 2 minutes interval when you start.
+Write exactly one test
+If the timer rings and the test is red then revert and start over.
+If the test is green before timer rings then commit.
+Restart timer (no discussions in between timers)
+Refactor
+If the timer rings and the refactoring is not complete then revert and start over.
+If the refactoring is complete before the timer rings then commit.
+Restart the timer (no discussions in between timers)
+Go to 3.
+When session time is up delete the code. -->
 ---
 class: center, middle, inverse
 # parallel pairing (use with caution!)
 ![Default-aligned image](pairing/pair-programming-two-computers.jpg)
+<!-- a pair works on the same story. the pair splits the story into many little tasks and divide between them. the pair sits together and starts to work on them. the pair constantly check on each other's progress. the natural the story is supposed to the smallest unit so the pair really need to work very closely. But if you aren't discipline well, you tend to fall into two people working on their own -->
 
 ---
 class: center, middle, inverse
@@ -229,6 +258,7 @@ class: center, middle, inverse
 ---
 class: center, middle, inverse
 # demo
+[Problem: convert roman numerals]
 
 ---
 class: center, middle, inverse
