@@ -10,7 +10,7 @@ All skill levels are welcome
 Safe to try new ideas -->
 
 ---
-class: center, middle, inverse
+class: center, middle
 # .red.bold[Fibonacci Calculator]
 
 computes nth Fibonacci number for a given integer n
@@ -61,3 +61,8 @@ class: center, middle, inverse
 class: center, middle, inverse
 # start coding dojo at work from next week!
 ![Default-aligned image](images/ninja-cat.jpg)
+
+---
+class: center, middle, inverse
+# 
+![Default-aligned image](images/DevOpsDaysBrisbane2014_single_slide.png)
