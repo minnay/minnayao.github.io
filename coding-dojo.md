@@ -59,5 +59,5 @@ class: center, middle, inverse
 
 ---
 class: center, middle, inverse
-# start to exercise coding dojo at work!
+# start coding dojo at work from next week!
 ![Default-aligned image](images/ninja-cat.jpg)
