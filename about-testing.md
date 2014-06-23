@@ -1,12 +1,7 @@
 class: center, middle, inverse
 
-# about testing
-.footnote[[[ThoughtWorks & Wotif]]()]
-
----
-class: center, middle, inverse
-
 # acceptance test
+.footnote[[[ThoughtWorks & Wotif]]()]
 
 ---
 class: center, middle, inverse
@@ -22,7 +17,7 @@ This is usually done in cooperation with the customer, or by an internal custome
 
 Reliability, Availability: Validated via a stress test.
 
-Scalabilitiy: Validated via a load test.
+Scalability: Validated via a load test.
 
 Usability: Validated via an inspection and demonstration to the customer. Is the UI configured to their liking? Did we put the customer branding in all the right places? Do we have all the fields/screens they asked for?
 
@@ -46,7 +41,24 @@ Now if we could just convince Salesforce to be more like Airbus and not fly a co
 ---
 class: center, middle, inverse
 
-# acceptance tests in continuous delivery
+# automated acceptance tests in continuous delivery
+![Default-aligned image](images/acceptance-test-stage.png)
+
+
+---
+class: center, middle, inverse
+# CD isn't possible without significant levels of automation
+![Default-aligned image](images/cd.jpg)
+
+<!-- If your acceptance tests break, that's a sign that you're missing one or more unit tests, so part of CD involves constantly improving your test coverage to try and find bugs earlier in the delivery process where the tests are more fine-grained and the bugs are cheaper to fix. 
+
+- fast feedback loops
+- feedback along the deployment pipeline/portability
+- reduced testing cycle time
+- better time allocation
+
+-->
+
 
 ---
 class: center, middle, inverse
@@ -83,8 +95,14 @@ Accessible: publishing the specifications so Janet, Dave and others can easily a
 
 ---
 class: center, middle, inverse
-# lemming
+# living documentation
+## better collaboration: BA + tester + dev
+## easier to maintain
+## one source of truth
+## executable specifications
 
 ---
 class: center, middle, inverse
-# living documentation
+# lemming makes it eaiser
+## a service for test data creation
+
