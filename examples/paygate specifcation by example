@@ -1,0 +1,86 @@
+When adding a new order source, we need to test that purchases and refunds sent to our paygate application are succesful for each combination of currency and cardtype accepted for that order source. 
+The existing tests had individual tests for each accepted combination for purchase requests, and were not covering all combinations for refund requests. 
+We've refactored the purchase requests tests so that one test can iterate through all the combinations, instead of having an individual case for each one.
+We've also added the same testing for refund requests. 
+The way the tests have been written should make it easier to test any new order source that is added in the future.
+
+| Running 224 cucumber tests...
+| Completed 224 cucumber tests, 0 failed in 14559ms
+
+| Running 40 cucumber tests...
+| Completed 496 cucumber tests, 0 failed in 26861ms
+
+old purchase test:
+  @endpoint
+  Scenario: Wotif AUD Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to wtf
+    And I set the "transAmount.currencyCode" property to AUD
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "WotifHotels"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "AUD"
+
+
+new purchase test: 
+  @endpoint
+  Scenario Outline: Purchase for each brand, cardtype and currency combination where scale is 100
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to <ordersource>
+    And I set the "transAmount.currencyCode" property to <currencycode>
+    And I set the "creditCard.creditCardType" property to <cardtype>
+    And I set the "creditCard.creditCardNumber" property to <cardnumber>
+    Then I post the purchase request
+    And the purchase return code is A150
+    And the dps request PostUsername is "<postusername>"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "<cardnumber>"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "<currencycode>"
+
+ Examples:
+    |    ordersource     |    currencycode    |      cardtype      |     cardnumber     |    postusername    |
+    |        wtf         |        AUD         |         1          |  4111111111111111  |    WotifHotels     |
+    |        wtf         |        AUD         |         2          |  5431111111111111  |    WotifHotels     |
+    |        wtf         |        CAD         |         1          |  4111111111111111  |    WotifHotels     |
+    |        wtf         |        CAD         |         2          |  5431111111111111  |    WotifHotels     |
+    |        wtf         |        CHF         |         1          |  4111111111111111  |    WotifHotels     |
+    |        wtf         |        CHF         |         2          |  5431111111111111  |    WotifHotels     |
+    |        wtf         |        DKK         |         1          |  4111111111111111  |    WotifHotels     |
+    |        wtf         |        DKK         |         2          |  5431111111111111  |    WotifHotels     |
+    |        wtf         |        EUR         |         1          |  4111111111111111  |    WotifHotels     |
+    |        wtf         |        EUR         |         2          |  5431111111111111  |    WotifHotels     |
+    |        wtf         |        GBP         |         1          |  4111111111111111  |    WotifHotels     |
+    |        wtf         |        GBP         |         2          |  5431111111111111  |    WotifHotels     |
+    |        wtf         |        MYR         |         1          |  4111111111111111  |    WotifHotels     |
+    |        wtf         |        MYR         |         2          |  5431111111111111  |    WotifHotels     |
+    |        wtf         |        NZD         |         1          |  4111111111111111  |    WotifHotels     |
+    |        wtf         |        NZD         |         2          |  5431111111111111  |    WotifHotels     |
+    |        wtf         |        SGD         |         1          |  4111111111111111  |    WotifHotels     |
+    |        wtf         |        SGD         |         2          |  5431111111111111  |    WotifHotels     |
+    |        wtf         |        USD         |         1          |  4111111111111111  |    WotifHotels     |
+    |        wtf         |        USD         |         2          |  5431111111111111  |    WotifHotels     |
+    |        wtf         |        ZAR         |         1          |  4111111111111111  |    WotifHotels     |
+    |        wtf         |        ZAR         |         2          |  5431111111111111  |    WotifHotels     |
+    |        wtf         |        HKD         |         1          |  4111111111111111  |    WotifHotels     |
+    |        wtf         |        HKD         |         2          |  5431111111111111  |    WotifHotels     |
+    |        wtf         |        THB         |         1          |  4111111111111111  |    WotifHotels     |
+    |        wtf         |        THB         |         2          |  5431111111111111  |    WotifHotels     |
+    |        wtf         |        AUD         |         4          |  371111111111114   |    WotifHotels     |
+    |        wtf         |        AUD         |         5          |   36000000000008   |    WotifHotels     |
+    |        wtf         |        NZD         |         4          |  371111111111114   |    WotifHotels     |
+    |        wtf         |        NZD         |         5          |   36000000000008   |    WotifHotels     |
+    |        wtf         |        HKD         |         4          |  371111111111114   |    WotifHotels     |
+    |        wtf         |        SGD         |         4          |  371111111111114   |    WotifHotels     |
+    |        wtf         |        USD         |         4          |  371111111111114   |    WotifHotels     |
+    |        wtf         |        CAD         |         4          |  371111111111114   |    WotifHotels     |
+    |        wtf         |        GBP         |         4          |  371111111111114   |    WotifHotels     |
+    |        wtf         |        EUR         |         4          |  371111111111114   |    WotifHotels     |

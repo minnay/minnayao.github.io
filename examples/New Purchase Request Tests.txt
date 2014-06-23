@@ -1,0 +1,280 @@
+280 lines
+
+Feature: DPS XML Request Verification
+  These scenarios cover the full matrix of purchase types that wotif can make.   It carries out a purchase or every wotif
+  brand -> card type -> currency and verifies that the produced dps xml contains the expected merchant details
+
+  Background:
+    Given dps request xml messages are being trapped
+    And No outages exist
+
+  @endpoint
+  Scenario Outline: Purchase for each brand, cardtype and currency combination where scale is 100
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to <ordersource>
+    And I set the "transAmount.currencyCode" property to <currencycode>
+    And I set the "creditCard.creditCardType" property to <cardtype>
+    And I set the "creditCard.creditCardNumber" property to <cardnumber>
+    Then I post the purchase request
+    And the purchase return code is A150
+    And the dps request PostUsername is "<postusername>"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "<cardnumber>"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "<currencycode>"
+
+  Examples:
+    |    ordersource     |    currencycode    |      cardtype      |     cardnumber     |    postusername    |
+    |        wtf         |        AUD         |         1          |  4111111111111111  |    WotifHotels     |
+    |        wtf         |        AUD         |         2          |  5431111111111111  |    WotifHotels     |
+    |        wtf         |        CAD         |         1          |  4111111111111111  |    WotifHotels     |
+    |        wtf         |        CAD         |         2          |  5431111111111111  |    WotifHotels     |
+    |        wtf         |        CHF         |         1          |  4111111111111111  |    WotifHotels     |
+    |        wtf         |        CHF         |         2          |  5431111111111111  |    WotifHotels     |
+    |        wtf         |        DKK         |         1          |  4111111111111111  |    WotifHotels     |
+    |        wtf         |        DKK         |         2          |  5431111111111111  |    WotifHotels     |
+    |        wtf         |        EUR         |         1          |  4111111111111111  |    WotifHotels     |
+    |        wtf         |        EUR         |         2          |  5431111111111111  |    WotifHotels     |
+    |        wtf         |        GBP         |         1          |  4111111111111111  |    WotifHotels     |
+    |        wtf         |        GBP         |         2          |  5431111111111111  |    WotifHotels     |
+    |        wtf         |        MYR         |         1          |  4111111111111111  |    WotifHotels     |
+    |        wtf         |        MYR         |         2          |  5431111111111111  |    WotifHotels     |
+    |        wtf         |        NZD         |         1          |  4111111111111111  |    WotifHotels     |
+    |        wtf         |        NZD         |         2          |  5431111111111111  |    WotifHotels     |
+    |        wtf         |        SGD         |         1          |  4111111111111111  |    WotifHotels     |
+    |        wtf         |        SGD         |         2          |  5431111111111111  |    WotifHotels     |
+    |        wtf         |        USD         |         1          |  4111111111111111  |    WotifHotels     |
+    |        wtf         |        USD         |         2          |  5431111111111111  |    WotifHotels     |
+    |        wtf         |        ZAR         |         1          |  4111111111111111  |    WotifHotels     |
+    |        wtf         |        ZAR         |         2          |  5431111111111111  |    WotifHotels     |
+    |        wtf         |        HKD         |         1          |  4111111111111111  |    WotifHotels     |
+    |        wtf         |        HKD         |         2          |  5431111111111111  |    WotifHotels     |
+    |        wtf         |        THB         |         1          |  4111111111111111  |    WotifHotels     |
+    |        wtf         |        THB         |         2          |  5431111111111111  |    WotifHotels     |
+    |        wtf         |        AUD         |         4          |  371111111111114   |    WotifHotels     |
+    |        wtf         |        AUD         |         5          |   36000000000008   |    WotifHotels     |
+    |        wtf         |        NZD         |         4          |  371111111111114   |    WotifHotels     |
+    |        wtf         |        NZD         |         5          |   36000000000008   |    WotifHotels     |
+    |        wtf         |        HKD         |         4          |  371111111111114   |    WotifHotels     |
+    |        wtf         |        SGD         |         4          |  371111111111114   |    WotifHotels     |
+    |        wtf         |        USD         |         4          |  371111111111114   |    WotifHotels     |
+    |        wtf         |        CAD         |         4          |  371111111111114   |    WotifHotels     |
+    |        wtf         |        GBP         |         4          |  371111111111114   |    WotifHotels     |
+    |        wtf         |        EUR         |         4          |  371111111111114   |    WotifHotels     |
+    |        tvl         |        AUD         |         1          |  4111111111111111  |      TravelAu      |
+    |        tvl         |        AUD         |         2          |  5431111111111111  |      TravelAu      |
+    |        tvl         |        CAD         |         1          |  4111111111111111  |      TravelAu      |
+    |        tvl         |        CAD         |         2          |  5431111111111111  |      TravelAu      |
+    |        tvl         |        CHF         |         1          |  4111111111111111  |      TravelAu      |
+    |        tvl         |        CHF         |         2          |  5431111111111111  |      TravelAu      |
+    |        tvl         |        DKK         |         1          |  4111111111111111  |      TravelAu      |
+    |        tvl         |        DKK         |         2          |  5431111111111111  |      TravelAu      |
+    |        tvl         |        EUR         |         1          |  4111111111111111  |      TravelAu      |
+    |        tvl         |        EUR         |         2          |  5431111111111111  |      TravelAu      |
+    |        tvl         |        GBP         |         1          |  4111111111111111  |      TravelAu      |
+    |        tvl         |        GBP         |         2          |  5431111111111111  |      TravelAu      |
+    |        tvl         |        HKD         |         1          |  4111111111111111  |      TravelAu      |
+    |        tvl         |        HKD         |         2          |  5431111111111111  |      TravelAu      |
+    |        tvl         |        MYR         |         1          |  4111111111111111  |      TravelAu      |
+    |        tvl         |        MYR         |         2          |  5431111111111111  |      TravelAu      |
+    |        tvl         |        NZD         |         1          |  4111111111111111  |      TravelAu      |
+    |        tvl         |        NZD         |         2          |  5431111111111111  |      TravelAu      |
+    |        tvl         |        SGD         |         1          |  4111111111111111  |      TravelAu      |
+    |        tvl         |        SGD         |         2          |  5431111111111111  |      TravelAu      |
+    |        tvl         |        THB         |         1          |  4111111111111111  |      TravelAu      |
+    |        tvl         |        THB         |         2          |  5431111111111111  |      TravelAu      |
+    |        tvl         |        USD         |         1          |  4111111111111111  |      TravelAu      |
+    |        tvl         |        USD         |         2          |  5431111111111111  |      TravelAu      |
+    |        tvl         |        ZAR         |         1          |  4111111111111111  |      TravelAu      |
+    |        tvl         |        ZAR         |         2          |  5431111111111111  |      TravelAu      |
+    |        tvl         |        AUD         |         4          |  371111111111114   |      TravelAu      |
+    |        tvl         |        AUD         |         5          |   36000000000008   |      TravelAu      |
+    |        lmau        |        AUD         |         1          |  4111111111111111  |    LastminuteAu    |
+    |        lmau        |        AUD         |         2          |  5431111111111111  |    LastminuteAu    |
+    |        lmau        |        CAD         |         1          |  4111111111111111  |    LastminuteAu    |
+    |        lmau        |        CAD         |         2          |  5431111111111111  |    LastminuteAu    |
+    |        lmau        |        CHF         |         1          |  4111111111111111  |    LastminuteAu    |
+    |        lmau        |        CHF         |         2          |  5431111111111111  |    LastminuteAu    |
+    |        lmau        |        DKK         |         1          |  4111111111111111  |    LastminuteAu    |
+    |        lmau        |        DKK         |         2          |  5431111111111111  |    LastminuteAu    |
+    |        lmau        |        EUR         |         1          |  4111111111111111  |    LastminuteAu    |
+    |        lmau        |        EUR         |         2          |  5431111111111111  |    LastminuteAu    |
+    |        lmau        |        GBP         |         1          |  4111111111111111  |    LastminuteAu    |
+    |        lmau        |        GBP         |         2          |  5431111111111111  |    LastminuteAu    |
+    |        lmau        |        HKD         |         1          |  4111111111111111  |    LastminuteAu    |
+    |        lmau        |        HKD         |         2          |  5431111111111111  |    LastminuteAu    |
+    |        lmau        |        MYR         |         1          |  4111111111111111  |    LastminuteAu    |
+    |        lmau        |        MYR         |         2          |  5431111111111111  |    LastminuteAu    |
+    |        lmau        |        NZD         |         1          |  4111111111111111  |    LastminuteAu    |
+    |        lmau        |        NZD         |         2          |  5431111111111111  |    LastminuteAu    |
+    |        lmau        |        SGD         |         1          |  4111111111111111  |    LastminuteAu    |
+    |        lmau        |        SGD         |         2          |  5431111111111111  |    LastminuteAu    |
+    |        lmau        |        THB         |         1          |  4111111111111111  |    LastminuteAu    |
+    |        lmau        |        THB         |         2          |  5431111111111111  |    LastminuteAu    |
+    |        lmau        |        USD         |         1          |  4111111111111111  |    LastminuteAu    |
+    |        lmau        |        USD         |         2          |  5431111111111111  |    LastminuteAu    |
+    |        lmau        |        ZAR         |         1          |  4111111111111111  |    LastminuteAu    |
+    |        lmau        |        ZAR         |         2          |  5431111111111111  |    LastminuteAu    |
+    |        lmau        |        AUD         |         4          |  371111111111114   |    LastminuteAu    |
+    |        lmau        |        AUD         |         5          |   36000000000008   |    LastminuteAu    |
+    |         ls         |        AUD         |         1          |  4111111111111111  |     LateStays      |
+    |         ls         |        AUD         |         2          |  5431111111111111  |     LateStays      |
+    |         ls         |        CAD         |         1          |  4111111111111111  |     LateStays      |
+    |         ls         |        CAD         |         2          |  5431111111111111  |     LateStays      |
+    |         ls         |        CHF         |         1          |  4111111111111111  |     LateStays      |
+    |         ls         |        CHF         |         2          |  5431111111111111  |     LateStays      |
+    |         ls         |        DKK         |         1          |  4111111111111111  |     LateStays      |
+    |         ls         |        DKK         |         2          |  5431111111111111  |     LateStays      |
+    |         ls         |        EUR         |         1          |  4111111111111111  |     LateStays      |
+    |         ls         |        EUR         |         2          |  5431111111111111  |     LateStays      |
+    |         ls         |        GBP         |         1          |  4111111111111111  |     LateStays      |
+    |         ls         |        GBP         |         2          |  5431111111111111  |     LateStays      |
+    |         ls         |        HKD         |         1          |  4111111111111111  |     LateStays      |
+    |         ls         |        HKD         |         2          |  5431111111111111  |     LateStays      |
+    |         ls         |        MYR         |         1          |  4111111111111111  |     LateStays      |
+    |         ls         |        MYR         |         2          |  5431111111111111  |     LateStays      |
+    |         ls         |        NZD         |         1          |  4111111111111111  |     LateStays      |
+    |         ls         |        NZD         |         2          |  5431111111111111  |     LateStays      |
+    |         ls         |        SGD         |         1          |  4111111111111111  |     LateStays      |
+    |         ls         |        SGD         |         2          |  5431111111111111  |     LateStays      |
+    |         ls         |        THB         |         1          |  4111111111111111  |     LateStays      |
+    |         ls         |        THB         |         2          |  5431111111111111  |     LateStays      |
+    |         ls         |        USD         |         1          |  4111111111111111  |     LateStays      |
+    |         ls         |        USD         |         2          |  5431111111111111  |     LateStays      |
+    |         ls         |        ZAR         |         1          |  4111111111111111  |     LateStays      |
+    |         ls         |        ZAR         |         2          |  5431111111111111  |     LateStays      |
+    |        awd         |        AUD         |         1          |  4111111111111111  |   AsiaWebDirect    |
+    |        awd         |        AUD         |         2          |  5431111111111111  |   AsiaWebDirect    |
+    |        awd         |        CAD         |         1          |  4111111111111111  |   AsiaWebDirect    |
+    |        awd         |        CAD         |         2          |  5431111111111111  |   AsiaWebDirect    |
+    |        awd         |        CHF         |         1          |  4111111111111111  |   AsiaWebDirect    |
+    |        awd         |        CHF         |         2          |  5431111111111111  |   AsiaWebDirect    |
+    |        awd         |        DKK         |         1          |  4111111111111111  |   AsiaWebDirect    |
+    |        awd         |        DKK         |         2          |  5431111111111111  |   AsiaWebDirect    |
+    |        awd         |        EUR         |         1          |  4111111111111111  |   AsiaWebDirect    |
+    |        awd         |        EUR         |         2          |  5431111111111111  |   AsiaWebDirect    |
+    |        awd         |        GBP         |         1          |  4111111111111111  |   AsiaWebDirect    |
+    |        awd         |        GBP         |         2          |  5431111111111111  |   AsiaWebDirect    |
+    |        awd         |        HKD         |         1          |  4111111111111111  |   AsiaWebDirect    |
+    |        awd         |        HKD         |         2          |  5431111111111111  |   AsiaWebDirect    |
+    |        awd         |        MYR         |         1          |  4111111111111111  |   AsiaWebDirect    |
+    |        awd         |        MYR         |         2          |  5431111111111111  |   AsiaWebDirect    |
+    |        awd         |        NZD         |         1          |  4111111111111111  |   AsiaWebDirect    |
+    |        awd         |        NZD         |         2          |  5431111111111111  |   AsiaWebDirect    |
+    |        awd         |        SGD         |         1          |  4111111111111111  |   AsiaWebDirect    |
+    |        awd         |        SGD         |         2          |  5431111111111111  |   AsiaWebDirect    |
+    |        awd         |        THB         |         1          |  4111111111111111  |   AsiaWebDirect    |
+    |        awd         |        THB         |         2          |  5431111111111111  |   AsiaWebDirect    |
+    |        awd         |        USD         |         1          |  4111111111111111  |   AsiaWebDirect    |
+    |        awd         |        USD         |         2          |  5431111111111111  |   AsiaWebDirect    |
+    |        awd         |        ZAR         |         1          |  4111111111111111  |   AsiaWebDirect    |
+    |        awd         |        ZAR         |         2          |  5431111111111111  |   AsiaWebDirect    |
+    |        ivu         |        AUD         |         1          |  4111111111111111  |       ivivu        |
+    |        ivu         |        AUD         |         2          |  5431111111111111  |       ivivu        |
+    |        ivu         |        CAD         |         1          |  4111111111111111  |       ivivu        |
+    |        ivu         |        CAD         |         2          |  5431111111111111  |       ivivu        |
+    |        ivu         |        CHF         |         1          |  4111111111111111  |       ivivu        |
+    |        ivu         |        CHF         |         2          |  5431111111111111  |       ivivu        |
+    |        ivu         |        DKK         |         1          |  4111111111111111  |       ivivu        |
+    |        ivu         |        DKK         |         2          |  5431111111111111  |       ivivu        |
+    |        ivu         |        EUR         |         1          |  4111111111111111  |       ivivu        |
+    |        ivu         |        EUR         |         2          |  5431111111111111  |       ivivu        |
+    |        ivu         |        GBP         |         1          |  4111111111111111  |       ivivu        |
+    |        ivu         |        GBP         |         2          |  5431111111111111  |       ivivu        |
+    |        ivu         |        HKD         |         1          |  4111111111111111  |       ivivu        |
+    |        ivu         |        HKD         |         2          |  5431111111111111  |       ivivu        |
+    |        ivu         |        MYR         |         1          |  4111111111111111  |       ivivu        |
+    |        ivu         |        MYR         |         2          |  5431111111111111  |       ivivu        |
+    |        ivu         |        NZD         |         1          |  4111111111111111  |       ivivu        |
+    |        ivu         |        NZD         |         2          |  5431111111111111  |       ivivu        |
+    |        ivu         |        SGD         |         1          |  4111111111111111  |       ivivu        |
+    |        ivu         |        SGD         |         2          |  5431111111111111  |       ivivu        |
+    |        ivu         |        THB         |         1          |  4111111111111111  |       ivivu        |
+    |        ivu         |        THB         |         2          |  5431111111111111  |       ivivu        |
+    |        ivu         |        USD         |         1          |  4111111111111111  |       ivivu        |
+    |        ivu         |        USD         |         2          |  5431111111111111  |       ivivu        |
+    |        ivu         |        ZAR         |         1          |  4111111111111111  |       ivivu        |
+    |        ivu         |        ZAR         |         2          |  5431111111111111  |       ivivu        |
+    |        arn         |        AUD         |         4          |  371111111111114   |    WotifArnold     |
+    |        arn         |        AUD         |         5          |   36000000000008   |    WotifArnold     |
+    |        arn         |        AUD         |         1          |  4111111111111111  |    WotifArnold     |
+    |        arn         |        AUD         |         2          |  5431111111111111  |    WotifArnold     |
+    |        arn         |        NZD         |         1          |  4111111111111111  |    WotifArnold     |
+    |        arn         |        NZD         |         2          |  5431111111111111  |    WotifArnold     |
+    |        pkg         |        AUD         |         1          |  4111111111111111  |  WotifPackagesTest |
+    |        pkg         |        AUD         |         2          |  5431111111111111  |  WotifPackagesTest |
+    |        pkg         |        AUD         |         4          |  371111111111114   |  WotifPackagesTest |
+    |        pkg         |        AUD         |         5          |   36000000000008   |  WotifPackagesTest |
+    |       serko        |        ZAR         |         2          |  5431111111111111  |    WotifHotels     |
+    |       serko        |        ZAR         |         1          |  4111111111111111  |    WotifHotels     |
+    |       serko        |        USD         |         2          |  5431111111111111  |    WotifHotels     |
+    |       serko        |        USD         |         1          |  4111111111111111  |    WotifHotels     |
+    |       serko        |        SGD         |         2          |  5431111111111111  |    WotifHotels     |
+    |       serko        |        SGD         |         1          |  4111111111111111  |    WotifHotels     |
+    |       serko        |        NZD         |         2          |  5431111111111111  |    WotifHotels     |
+    |       serko        |        NZD         |         1          |  4111111111111111  |    WotifHotels     |
+    |       serko        |        MYR         |         2          |  5431111111111111  |    WotifHotels     |
+    |       serko        |        MYR         |         1          |  4111111111111111  |    WotifHotels     |
+    |       serko        |        GBP         |         2          |  5431111111111111  |    WotifHotels     |
+    |       serko        |        GBP         |         1          |  4111111111111111  |    WotifHotels     |
+    |       serko        |        EUR         |         2          |  5431111111111111  |    WotifHotels     |
+    |       serko        |        EUR         |         1          |  4111111111111111  |    WotifHotels     |
+    |       serko        |        DKK         |         2          |  5431111111111111  |    WotifHotels     |
+    |       serko        |        DKK         |         1          |  4111111111111111  |    WotifHotels     |
+    |       serko        |        CHF         |         2          |  5431111111111111  |    WotifHotels     |
+    |       serko        |        CHF         |         1          |  4111111111111111  |    WotifHotels     |
+    |       serko        |        CAD         |         2          |  5431111111111111  |    WotifHotels     |
+    |       serko        |        CAD         |         1          |  4111111111111111  |    WotifHotels     |
+    |       serko        |        AUD         |         2          |  5431111111111111  |    WotifHotels     |
+    |       serko        |        AUD         |         1          |  4111111111111111  |    WotifHotels     |
+    |       serko        |        THB         |         2          |  5431111111111111  |    WotifHotels     |
+    |       serko        |        THB         |         1          |  4111111111111111  |    WotifHotels     |
+    |       serko        |        HKD         |         2          |  5431111111111111  |    WotifHotels     |
+    |       serko        |        HKD         |         1          |  4111111111111111  |    WotifHotels     |
+    |       serko        |        NZD         |         4          |  371111111111114   |    WotifHotels     |
+    |       serko        |        NZD         |         5          |   36000000000008   |    WotifHotels     |
+    |       serko        |        HKD         |         4          |  371111111111114   |    WotifHotels     |
+    |       serko        |        SGD         |         4          |  371111111111114   |    WotifHotels     |
+    |       serko        |        USD         |         4          |  371111111111114   |    WotifHotels     |
+    |       serko        |        CAD         |         4          |  371111111111114   |    WotifHotels     |
+    |       serko        |        GBP         |         4          |  371111111111114   |    WotifHotels     |
+    |       serko        |        EUR         |         4          |  371111111111114   |    WotifHotels     |
+    |       serko        |        AUD         |         5          |   36000000000008   |    WotifHotels     |
+    |       serko        |        AUD         |         4          |  371111111111114   |    WotifHotels     |
+
+ @endpoint
+  Scenario Outline: Purchase for each brand and cardtype combination with currency that has scale of 1
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to <ordersource>
+    And I set the "transAmount.currencyCode" property to <currencycode>
+    And I set the "creditCard.creditCardType" property to <cardtype>
+    And I set the "creditCard.creditCardNumber" property to <cardnumber>
+    And I set the "transAmount.amount.scale" property to 1
+    Then I post the purchase request
+    And the purchase return code is A150
+    And the dps request PostUsername is "<postusername>"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "<cardnumber>"
+    And the dps request Amount is "100"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "<currencycode>"
+
+  Examples:
+    |    ordersource     |    currencycode    |      cardtype      |     cardnumber     |    postusername    |
+    |        wtf         |        JPY         |         1          |  4111111111111111  |    WotifHotels     |
+    |        wtf         |        JPY         |         2          |  5431111111111111  |    WotifHotels     |
+    |        tvl         |        JPY         |         1          |  4111111111111111  |      TravelAu      |
+    |        tvl         |        JPY         |         2          |  5431111111111111  |      TravelAu      |
+    |        lmau        |        JPY         |         1          |  4111111111111111  |    LastminuteAu    |
+    |        lmau        |        JPY         |         2          |  5431111111111111  |    LastminuteAu    |
+    |         ls         |        JPY         |         1          |  4111111111111111  |     LateStays      |
+    |         ls         |        JPY         |         2          |  5431111111111111  |     LateStays      |
+    |        awd         |        JPY         |         1          |  4111111111111111  |   AsiaWebDirect    |
+    |        awd         |        JPY         |         2          |  5431111111111111  |   AsiaWebDirect    |
+    |        ivu         |        JPY         |         1          |  4111111111111111  |       ivivu        |
+    |        ivu         |        JPY         |         2          |  5431111111111111  |       ivivu        |
+    |       serko        |        JPY         |         2          |  5431111111111111  |    WotifHotels     |
+    |       serko        |        JPY         |         1          |  4111111111111111  |    WotifHotels     |

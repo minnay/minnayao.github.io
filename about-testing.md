@@ -68,7 +68,7 @@ class: center, middle, inverse
 class: center, middle, inverse
 # automated test scripts
 .left[
-```ruby
+```script
 open "http://www.wotif.com"
 assertTitle "Wotif.com: Online hotel bookings with instant confirmation"
 pause "2000"
@@ -85,49 +85,227 @@ class: center, middle, inverse
 # cucumber
 .left[
 ```ruby
-Feature: Wotif hotel reservation 
+Feature: DPS XML Request Verification
+  These scenarios cover the full matrix of purchase types that wotif can make.   It carries out a purchase or every wotif
+  brand -> card type -> currency and verifies that the produced dps xml contains the expected merchant details
 
-Scenario: search hotels of a destination
-Given I am on the 'wotif' home page
-When I search for ‘Australia’ hotels
-Then I see the regions for ‘Australia’
-When I select 'Sydney' as my destination
-And I click 'Search'
-Then I see '6' five stars 'wot hotel'
-And I see '15' five stars wotif hotels
+  Background:
+    Given dps request xml messages are being trapped
+    And No outages exist
+
+  @endpoint
+  Scenario: ARN AUD American Express Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to arn
+    And I set the "transAmount.currencyCode" property to AUD
+    And I set the "creditCard.creditCardType" property to 4
+    And I set the "creditCard.creditCardNumber" property to 371111111111114
+    Then I post the purchase request
+    And the dps request PostUsername is "WotifArnold"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "371111111111114"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "AUD"
 ```
 ]
+
+---
+class: center, middle, inverse
+.left[
+```ruby
+  @endpoint
+  Scenario: ARN AUD Diners Club Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to arn
+    And I set the "transAmount.currencyCode" property to AUD
+    And I set the "creditCard.creditCardType" property to 5
+    And I set the "creditCard.creditCardNumber" property to 36000000000008
+    Then I post the purchase request
+    And the dps request PostUsername is "WotifArnold"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "36000000000008"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "AUD"
+
+  @endpoint
+  Scenario: WTF AUD Visa Purchase
+    ...
+
+Notice: there are 3215 lines
+```
+]
+
 ---
 class: center, middle, inverse
 # specification by example
 
 ---
 class: center, middle, inverse
-# Specifications, not scripts
-# Abstract
-# Edge cases
-# Key examples
-# End-to-End flows: 1-3 flows
-# Accessible
+.left[
+```ruby
+@endpoint
+  Scenario Outline: Purchase for each brand, cardtype and currency combination 
+                    where scale is 100
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to <ordersource>
+    And I set the "transAmount.currencyCode" property to <currencycode>
+    And I set the "creditCard.creditCardType" property to <cardtype>
+    And I set the "creditCard.creditCardNumber" property to <cardnumber>
+    Then I post the purchase request
+    And the purchase return code is A150
+    And the dps request PostUsername is "<postusername>"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "<cardnumber>"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "<currencycode>"
+
+  Examples:
+    | ordersource | currencycode | cardtype |     cardnumber     | postusername |
+    |    wtf      |     AUD      |    1     |  4111111111111111  | WotifHotels  |
+    |    wtf      |     AUD      |    2     |  5431111111111111  | WotifHotels  |
+    |    wtf      |     CAD      |    1     |  4111111111111111  | WotifHotels  |
+    |    wtf      |     CAD      |    2     |  5431111111111111  | WotifHotels  |
+    |    wtf      |     CHF      |    1     |  4111111111111111  | WotifHotels  |
+    |    wtf      |     CHF      |    2     |  5431111111111111  | WotifHotels  |
+    |    wtf      |     DKK      |    1     |  4111111111111111  | WotifHotels  |
+    |    wtf      |     DKK      |    2     |  5431111111111111  | WotifHotels  |
+
+Notice: there are 280 lines 
+``` 
+]
+
+---
+class: center, middle, inverse
+# from 
+# to
+
+
+# specifications, not scripts
+
+---
+class: center, middle, inverse
+# abstract
+
+---
+class: center, middle, inverse
+# ubiquitous language
+
+---
+class: center, middle, inverse
+# edge cases
+
+---
+class: center, middle, inverse
+# key examples
+
+---
+class: center, middle, inverse
+# end-to-end flows: 1-3 flows
+
+---
+class: center, middle, inverse
+# accessible
 
 <!-- Specifications, not scripts: she should move to less workflow based scenarios but more specifications about what is needed, as these are easier to understand, more precise and testable;
 Abstract: the specification should be abstract enough to highlight the detail, remove the noise, and not being tied to the implementation of the user interface;
 Ubiquitous language: the language used by the team and specifications should be consistent throughout the development process to ensure a shared understanding;
 Edge cases: unusual variances should be specified to ensure clarity of expectations: “things that seem obvious kill us, if something sounds obvious, that’s where the danger is”;
-Key examples: each decision point should have 5 - 6 key examples, and not more, so it is clear what is expected. These can be created by focussing on the differences between existing scenarios;
+Key examples: each decision point should have a few key examples, and not more, so it is clear what is expected. These can be created by focussing on the differences between existing scenarios;
 End-to-End flows: only a few (1-3) end-to-end flows, not a combination of every decision point combination
-Accessible: publishing the specifications so Janet, Dave and others can easily access the latest versions. -->
+Accessible: publishing the specifications so stakeholders can easily access the latest versions. -->
 
 ---
 class: center, middle, inverse
 # living documentation
-## better collaboration: BA + tester + dev
-## easier to maintain
-## one source of truth
-## executable specifications
+
+---
+class: center, middle, inverse
+# 'three amigos': BA/SME + tester + dev
+
+---
+class: center, middle, inverse
+# easier to maintain
+
+---
+class: center, middle, inverse
+# one source of truth
+
+---
+class: center, middle, inverse
+# executable specifications
 
 ---
 class: center, middle, inverse
 # lemming makes it eaiser
 ## a service for test data creation
 
+---
+class: center, middle, inverse
+# integration with lemming
+
+---
+class: center, middle, inverse
+.left[
+```json
+{
+    "property": {
+        "name": "SalesOTADepositTest",
+        "displayName": "Wotif SalesOTA Acceptance Test Property-Deposit",
+        "countryCode": "AU",
+        "accommodationType": "Holiday rental"
+    },
+    "roomType": {
+        "code": "STD",
+        "description": "SalesOTA Standard Room",
+        "link": "//features//payment//deposit"
+    },
+    "availability": {
+        "startDate": "sod + 1d",
+        "endDate": "sod + 5d",
+        "rate": 100
+    },
+    "paymentType":"Deposit"
+}
+```]
+
+---
+class: center, middle, inverse
+.left[
+```json
+{
+    "targets": [
+        "WOTIF_WEB"
+    ],
+    "name": "SalesOTATest",
+    "displayname": "SalesOTA Acceptance Test Property",
+    "countryIsoCode": "AU",
+    "inventoryType": "Hotel",
+    "ratePlans": [
+        {
+            "details": {
+                "roomType": "STD",
+                "description": "SalesOTA Standard Room"
+            },
+            "rates": [
+                {
+                    "startDate": "sod + 1d",
+                    "endDate": "sod + 5d",
+                    "price": 100.0
+                }
+            ],
+            "commissions": [
+                {
+                    "orderSource": "wtf",
+                    "percent" : 0.11
+                }
+            ]
+        }
+    ]
+}
+```]

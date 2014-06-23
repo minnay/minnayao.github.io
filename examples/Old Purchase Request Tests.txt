@@ -1,0 +1,3217 @@
+<html>
+
+Feature: DPS XML Request Verification
+  These scenarios cover the full matrix of purchase types that wotif can make.   It carries out a purchase or every wotif
+  brand -> card type -> currency and verifies that the produced dps xml contains the expected merchant details
+
+  Background:
+    Given dps request xml messages are being trapped
+    And No outages exist
+
+  @endpoint
+  Scenario: ARN AUD American Express Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to arn
+    And I set the "transAmount.currencyCode" property to AUD
+    And I set the "creditCard.creditCardType" property to 4
+    And I set the "creditCard.creditCardNumber" property to 371111111111114
+    Then I post the purchase request
+    And the dps request PostUsername is "WotifArnold"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "371111111111114"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "AUD"
+
+
+  @endpoint
+  Scenario: ARN AUD Diners Club Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to arn
+    And I set the "transAmount.currencyCode" property to AUD
+    And I set the "creditCard.creditCardType" property to 5
+    And I set the "creditCard.creditCardNumber" property to 36000000000008
+    Then I post the purchase request
+    And the dps request PostUsername is "WotifArnold"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "36000000000008"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "AUD"
+
+
+  @endpoint
+  Scenario: WTF AUD Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to wtf
+    And I set the "transAmount.currencyCode" property to AUD
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "WotifHotels"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "AUD"
+
+
+  @endpoint
+  Scenario: WTF AUD Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to wtf
+    And I set the "transAmount.currencyCode" property to AUD
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "WotifHotels"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "AUD"
+
+
+  @endpoint
+  Scenario: WTF CAD Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to wtf
+    And I set the "transAmount.currencyCode" property to CAD
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "WotifHotels"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "CAD"
+
+
+  @endpoint
+  Scenario: WTF CAD Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to wtf
+    And I set the "transAmount.currencyCode" property to CAD
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "WotifHotels"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "CAD"
+
+
+  @endpoint
+  Scenario: WTF CHF Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to wtf
+    And I set the "transAmount.currencyCode" property to CHF
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "WotifHotels"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "CHF"
+
+
+  @endpoint
+  Scenario: WTF CHF Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to wtf
+    And I set the "transAmount.currencyCode" property to CHF
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "WotifHotels"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "CHF"
+
+
+  @endpoint
+  Scenario: WTF DKK Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to wtf
+    And I set the "transAmount.currencyCode" property to DKK
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "WotifHotels"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "DKK"
+
+
+  @endpoint
+  Scenario: WTF DKK Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to wtf
+    And I set the "transAmount.currencyCode" property to DKK
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "WotifHotels"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "DKK"
+
+
+  @endpoint
+  Scenario: WTF EUR Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to wtf
+    And I set the "transAmount.currencyCode" property to EUR
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "WotifHotels"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "EUR"
+
+
+  @endpoint
+  Scenario: WTF EUR Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to wtf
+    And I set the "transAmount.currencyCode" property to EUR
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "WotifHotels"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "EUR"
+
+
+  @endpoint
+  Scenario: WTF GBP Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to wtf
+    And I set the "transAmount.currencyCode" property to GBP
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "WotifHotels"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "GBP"
+
+
+  @endpoint
+  Scenario: WTF GBP Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to wtf
+    And I set the "transAmount.currencyCode" property to GBP
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "WotifHotels"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "GBP"
+
+
+  @endpoint
+  Scenario: WTF JPY Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to wtf
+    And I set the "transAmount.currencyCode" property to JPY
+    And I set the "transAmount.amount.scale" property to 1
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "WotifHotels"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "100"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "JPY"
+
+
+  @endpoint
+  Scenario: WTF JPY Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to wtf
+    And I set the "transAmount.currencyCode" property to JPY
+    And I set the "transAmount.amount.scale" property to 1
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "WotifHotels"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "100"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "JPY"
+
+
+  @endpoint
+  Scenario: WTF MYR Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to wtf
+    And I set the "transAmount.currencyCode" property to MYR
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "WotifHotels"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "MYR"
+
+
+  @endpoint
+  Scenario: WTF MYR Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to wtf
+    And I set the "transAmount.currencyCode" property to MYR
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "WotifHotels"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "MYR"
+
+
+  @endpoint
+  Scenario: WTF NZD Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to wtf
+    And I set the "transAmount.currencyCode" property to NZD
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "WotifHotels"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "NZD"
+
+
+  @endpoint
+  Scenario: WTF NZD Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to wtf
+    And I set the "transAmount.currencyCode" property to NZD
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "WotifHotels"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "NZD"
+
+
+  @endpoint
+  Scenario: WTF SGD Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to wtf
+    And I set the "transAmount.currencyCode" property to SGD
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "WotifHotels"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "SGD"
+
+
+  @endpoint
+  Scenario: WTF SGD Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to wtf
+    And I set the "transAmount.currencyCode" property to SGD
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "WotifHotels"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "SGD"
+
+
+  @endpoint
+  Scenario: WTF USD Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to wtf
+    And I set the "transAmount.currencyCode" property to USD
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "WotifHotels"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "USD"
+
+
+  @endpoint
+  Scenario: WTF USD Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to wtf
+    And I set the "transAmount.currencyCode" property to USD
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "WotifHotels"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "USD"
+
+
+  @endpoint
+  Scenario: WTF ZAR Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to wtf
+    And I set the "transAmount.currencyCode" property to ZAR
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "WotifHotels"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "ZAR"
+
+
+  @endpoint
+  Scenario: WTF ZAR Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to wtf
+    And I set the "transAmount.currencyCode" property to ZAR
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "WotifHotels"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "ZAR"
+
+
+  @endpoint
+  Scenario: WTF HKD Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to wtf
+    And I set the "transAmount.currencyCode" property to HKD
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "WotifHotels"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "HKD"
+
+
+  @endpoint
+  Scenario: WTF HKD Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to wtf
+    And I set the "transAmount.currencyCode" property to HKD
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "WotifHotels"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "HKD"
+
+
+  @endpoint
+  Scenario: WTF THB Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to wtf
+    And I set the "transAmount.currencyCode" property to THB
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "WotifHotels"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "THB"
+
+
+  @endpoint
+  Scenario: WTF THB Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to wtf
+    And I set the "transAmount.currencyCode" property to THB
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "WotifHotels"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "THB"
+
+
+  @endpoint
+  Scenario: WTF NZD American Express Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to wtf
+    And I set the "transAmount.currencyCode" property to NZD
+    And I set the "creditCard.creditCardType" property to 4
+    And I set the "creditCard.creditCardNumber" property to 371111111111114
+    Then I post the purchase request
+    And the dps request PostUsername is "WotifHotels"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "371111111111114"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "NZD"
+
+
+  @endpoint
+  Scenario: WTF NZD Diners Club Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to wtf
+    And I set the "transAmount.currencyCode" property to NZD
+    And I set the "creditCard.creditCardType" property to 5
+    And I set the "creditCard.creditCardNumber" property to 36000000000008
+    Then I post the purchase request
+    And the dps request PostUsername is "WotifHotels"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "36000000000008"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "NZD"
+
+
+  @endpoint
+  Scenario: WTF HKD American Express Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to wtf
+    And I set the "transAmount.currencyCode" property to HKD
+    And I set the "creditCard.creditCardType" property to 4
+    And I set the "creditCard.creditCardNumber" property to 371111111111114
+    Then I post the purchase request
+    And the dps request PostUsername is "WotifHotels"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "371111111111114"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "HKD"
+
+
+  @endpoint
+  Scenario: WTF SGD American Express Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to wtf
+    And I set the "transAmount.currencyCode" property to SGD
+    And I set the "creditCard.creditCardType" property to 4
+    And I set the "creditCard.creditCardNumber" property to 371111111111114
+    Then I post the purchase request
+    And the dps request PostUsername is "WotifHotels"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "371111111111114"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "SGD"
+
+
+  @endpoint
+  Scenario: WTF USD American Express Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to wtf
+    And I set the "transAmount.currencyCode" property to USD
+    And I set the "creditCard.creditCardType" property to 4
+    And I set the "creditCard.creditCardNumber" property to 371111111111114
+    Then I post the purchase request
+    And the dps request PostUsername is "WotifHotels"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "371111111111114"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "USD"
+
+
+  @endpoint
+  Scenario: WTF CAD American Express Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to wtf
+    And I set the "transAmount.currencyCode" property to CAD
+    And I set the "creditCard.creditCardType" property to 4
+    And I set the "creditCard.creditCardNumber" property to 371111111111114
+    Then I post the purchase request
+    And the dps request PostUsername is "WotifHotels"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "371111111111114"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "CAD"
+
+
+  @endpoint
+  Scenario: WTF GBP American Express Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to wtf
+    And I set the "transAmount.currencyCode" property to GBP
+    And I set the "creditCard.creditCardType" property to 4
+    And I set the "creditCard.creditCardNumber" property to 371111111111114
+    Then I post the purchase request
+    And the dps request PostUsername is "WotifHotels"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "371111111111114"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "GBP"
+
+
+  @endpoint
+  Scenario: WTF EUR American Express Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to wtf
+    And I set the "transAmount.currencyCode" property to EUR
+    And I set the "creditCard.creditCardType" property to 4
+    And I set the "creditCard.creditCardNumber" property to 371111111111114
+    Then I post the purchase request
+    And the dps request PostUsername is "WotifHotels"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "371111111111114"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "EUR"
+
+
+  @endpoint
+  Scenario: WTF AUD Diners Club Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to wtf
+    And I set the "transAmount.currencyCode" property to AUD
+    And I set the "creditCard.creditCardType" property to 5
+    And I set the "creditCard.creditCardNumber" property to 36000000000008
+    Then I post the purchase request
+    And the dps request PostUsername is "WotifHotels"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "36000000000008"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "AUD"
+
+
+  @endpoint
+  Scenario: WTF AUD American Express Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to wtf
+    And I set the "transAmount.currencyCode" property to AUD
+    And I set the "creditCard.creditCardType" property to 4
+    And I set the "creditCard.creditCardNumber" property to 371111111111114
+    Then I post the purchase request
+    And the dps request PostUsername is "WotifHotels"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "371111111111114"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "AUD"
+
+
+  @endpoint
+  Scenario: TVL AUD Diners Club Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to tvl
+    And I set the "transAmount.currencyCode" property to AUD
+    And I set the "creditCard.creditCardType" property to 5
+    And I set the "creditCard.creditCardNumber" property to 36000000000008
+    Then I post the purchase request
+    And the dps request PostUsername is "TravelAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "36000000000008"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "AUD"
+
+
+  @endpoint
+  Scenario: TVL AUD American Express Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to tvl
+    And I set the "transAmount.currencyCode" property to AUD
+    And I set the "creditCard.creditCardType" property to 4
+    And I set the "creditCard.creditCardNumber" property to 371111111111114
+    Then I post the purchase request
+    And the dps request PostUsername is "TravelAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "371111111111114"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "AUD"
+
+
+  @endpoint
+  Scenario: LMAU AUD Diners Club Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to lmau
+    And I set the "transAmount.currencyCode" property to AUD
+    And I set the "creditCard.creditCardType" property to 5
+    And I set the "creditCard.creditCardNumber" property to 36000000000008
+    Then I post the purchase request
+    And the dps request PostUsername is "LastminuteAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "36000000000008"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "AUD"
+
+
+  @endpoint
+  Scenario: LMAU AUD American Express Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to lmau
+    And I set the "transAmount.currencyCode" property to AUD
+    And I set the "creditCard.creditCardType" property to 4
+    And I set the "creditCard.creditCardNumber" property to 371111111111114
+    Then I post the purchase request
+    And the dps request PostUsername is "LastminuteAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "371111111111114"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "AUD"
+
+
+  @endpoint
+  Scenario: LS AUD Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ls
+    And I set the "transAmount.currencyCode" property to AUD
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LateStays"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "AUD"
+
+
+  @endpoint
+  Scenario: LS AUD Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ls
+    And I set the "transAmount.currencyCode" property to AUD
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LateStays"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "AUD"
+
+
+  @endpoint
+  Scenario: LS CAD Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ls
+    And I set the "transAmount.currencyCode" property to CAD
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LateStays"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "CAD"
+
+
+  @endpoint
+  Scenario: LS CAD Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ls
+    And I set the "transAmount.currencyCode" property to CAD
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LateStays"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "CAD"
+
+
+  @endpoint
+  Scenario: LS CHF Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ls
+    And I set the "transAmount.currencyCode" property to CHF
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LateStays"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "CHF"
+
+
+  @endpoint
+  Scenario: LS CHF Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ls
+    And I set the "transAmount.currencyCode" property to CHF
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LateStays"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "CHF"
+
+
+  @endpoint
+  Scenario: LS DKK Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ls
+    And I set the "transAmount.currencyCode" property to DKK
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LateStays"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "DKK"
+
+
+  @endpoint
+  Scenario: LS DKK Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ls
+    And I set the "transAmount.currencyCode" property to DKK
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LateStays"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "DKK"
+
+
+  @endpoint
+  Scenario: LS EUR Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ls
+    And I set the "transAmount.currencyCode" property to EUR
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LateStays"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "EUR"
+
+
+  @endpoint
+  Scenario: LS EUR Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ls
+    And I set the "transAmount.currencyCode" property to EUR
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LateStays"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "EUR"
+
+
+  @endpoint
+  Scenario: LS GBP Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ls
+    And I set the "transAmount.currencyCode" property to GBP
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LateStays"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "GBP"
+
+
+  @endpoint
+  Scenario: LS GBP Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ls
+    And I set the "transAmount.currencyCode" property to GBP
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LateStays"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "GBP"
+
+
+  @endpoint
+  Scenario: LS HKD Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ls
+    And I set the "transAmount.currencyCode" property to HKD
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LateStays"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "HKD"
+
+
+  @endpoint
+  Scenario: LS HKD Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ls
+    And I set the "transAmount.currencyCode" property to HKD
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LateStays"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "HKD"
+
+
+  @endpoint
+  Scenario: LS JPY Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ls
+    And I set the "transAmount.currencyCode" property to JPY
+    And I set the "transAmount.amount.scale" property to 1
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LateStays"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "100"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "JPY"
+
+
+  @endpoint
+  Scenario: LS JPY Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ls
+    And I set the "transAmount.currencyCode" property to JPY
+    And I set the "transAmount.amount.scale" property to 1
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LateStays"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "100"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "JPY"
+
+
+  @endpoint
+  Scenario: LS MYR Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ls
+    And I set the "transAmount.currencyCode" property to MYR
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LateStays"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "MYR"
+
+
+  @endpoint
+  Scenario: LS MYR Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ls
+    And I set the "transAmount.currencyCode" property to MYR
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LateStays"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "MYR"
+
+
+  @endpoint
+  Scenario: LS NZD Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ls
+    And I set the "transAmount.currencyCode" property to NZD
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LateStays"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "NZD"
+
+
+  @endpoint
+  Scenario: LS NZD Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ls
+    And I set the "transAmount.currencyCode" property to NZD
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LateStays"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "NZD"
+
+
+  @endpoint
+  Scenario: LS SGD Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ls
+    And I set the "transAmount.currencyCode" property to SGD
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LateStays"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "SGD"
+
+
+  @endpoint
+  Scenario: LS SGD Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ls
+    And I set the "transAmount.currencyCode" property to SGD
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LateStays"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "SGD"
+
+
+  @endpoint
+  Scenario: LS THB Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ls
+    And I set the "transAmount.currencyCode" property to THB
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LateStays"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "THB"
+
+
+  @endpoint
+  Scenario: LS THB Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ls
+    And I set the "transAmount.currencyCode" property to THB
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LateStays"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "THB"
+
+
+  @endpoint
+  Scenario: LS USD Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ls
+    And I set the "transAmount.currencyCode" property to USD
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LateStays"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "USD"
+
+
+  @endpoint
+  Scenario: LS USD Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ls
+    And I set the "transAmount.currencyCode" property to USD
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LateStays"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "USD"
+
+
+  @endpoint
+  Scenario: LS ZAR Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ls
+    And I set the "transAmount.currencyCode" property to ZAR
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LateStays"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "ZAR"
+
+
+  @endpoint
+  Scenario: LS ZAR Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ls
+    And I set the "transAmount.currencyCode" property to ZAR
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LateStays"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "ZAR"
+
+
+  @endpoint
+  Scenario: AWD AUD Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to awd
+    And I set the "transAmount.currencyCode" property to AUD
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "AsiaWebDirect"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "AUD"
+
+
+  @endpoint
+  Scenario: AWD AUD Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to awd
+    And I set the "transAmount.currencyCode" property to AUD
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "AsiaWebDirect"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "AUD"
+
+
+  @endpoint
+  Scenario: AWD CAD Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to awd
+    And I set the "transAmount.currencyCode" property to CAD
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "AsiaWebDirect"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "CAD"
+
+
+  @endpoint
+  Scenario: AWD CAD Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to awd
+    And I set the "transAmount.currencyCode" property to CAD
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "AsiaWebDirect"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "CAD"
+
+
+  @endpoint
+  Scenario: AWD CHF Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to awd
+    And I set the "transAmount.currencyCode" property to CHF
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "AsiaWebDirect"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "CHF"
+
+
+  @endpoint
+  Scenario: AWD CHF Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to awd
+    And I set the "transAmount.currencyCode" property to CHF
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "AsiaWebDirect"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "CHF"
+
+
+  @endpoint
+  Scenario: AWD DKK Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to awd
+    And I set the "transAmount.currencyCode" property to DKK
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "AsiaWebDirect"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "DKK"
+
+
+  @endpoint
+  Scenario: AWD DKK Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to awd
+    And I set the "transAmount.currencyCode" property to DKK
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "AsiaWebDirect"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "DKK"
+
+
+  @endpoint
+  Scenario: AWD EUR Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to awd
+    And I set the "transAmount.currencyCode" property to EUR
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "AsiaWebDirect"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "EUR"
+
+
+  @endpoint
+  Scenario: AWD EUR Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to awd
+    And I set the "transAmount.currencyCode" property to EUR
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "AsiaWebDirect"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "EUR"
+
+
+  @endpoint
+  Scenario: AWD GBP Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to awd
+    And I set the "transAmount.currencyCode" property to GBP
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "AsiaWebDirect"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "GBP"
+
+
+  @endpoint
+  Scenario: AWD GBP Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to awd
+    And I set the "transAmount.currencyCode" property to GBP
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "AsiaWebDirect"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "GBP"
+
+
+  @endpoint
+  Scenario: AWD HKD Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to awd
+    And I set the "transAmount.currencyCode" property to HKD
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "AsiaWebDirect"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "HKD"
+
+
+  @endpoint
+  Scenario: AWD HKD Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to awd
+    And I set the "transAmount.currencyCode" property to HKD
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "AsiaWebDirect"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "HKD"
+
+
+  @endpoint
+  Scenario: AWD JPY Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to awd
+    And I set the "transAmount.currencyCode" property to JPY
+    And I set the "transAmount.amount.scale" property to 1
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "AsiaWebDirect"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "100"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "JPY"
+
+
+  @endpoint
+  Scenario: AWD JPY Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to awd
+    And I set the "transAmount.currencyCode" property to JPY
+    And I set the "transAmount.amount.scale" property to 1
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "AsiaWebDirect"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "100"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "JPY"
+
+
+  @endpoint
+  Scenario: AWD MYR Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to awd
+    And I set the "transAmount.currencyCode" property to MYR
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "AsiaWebDirect"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "MYR"
+
+
+  @endpoint
+  Scenario: AWD MYR Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to awd
+    And I set the "transAmount.currencyCode" property to MYR
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "AsiaWebDirect"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "MYR"
+
+
+  @endpoint
+  Scenario: AWD NZD Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to awd
+    And I set the "transAmount.currencyCode" property to NZD
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "AsiaWebDirect"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "NZD"
+
+
+  @endpoint
+  Scenario: AWD NZD Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to awd
+    And I set the "transAmount.currencyCode" property to NZD
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "AsiaWebDirect"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "NZD"
+
+
+  @endpoint
+  Scenario: AWD SGD Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to awd
+    And I set the "transAmount.currencyCode" property to SGD
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "AsiaWebDirect"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "SGD"
+
+
+  @endpoint
+  Scenario: AWD SGD Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to awd
+    And I set the "transAmount.currencyCode" property to SGD
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "AsiaWebDirect"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "SGD"
+
+
+  @endpoint
+  Scenario: AWD THB Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to awd
+    And I set the "transAmount.currencyCode" property to THB
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "AsiaWebDirect"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "THB"
+
+
+  @endpoint
+  Scenario: AWD THB Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to awd
+    And I set the "transAmount.currencyCode" property to THB
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "AsiaWebDirect"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "THB"
+
+
+  @endpoint
+  Scenario: AWD USD Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to awd
+    And I set the "transAmount.currencyCode" property to USD
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "AsiaWebDirect"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "USD"
+
+
+  @endpoint
+  Scenario: AWD USD Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to awd
+    And I set the "transAmount.currencyCode" property to USD
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "AsiaWebDirect"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "USD"
+
+
+  @endpoint
+  Scenario: AWD ZAR Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to awd
+    And I set the "transAmount.currencyCode" property to ZAR
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "AsiaWebDirect"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "ZAR"
+
+
+  @endpoint
+  Scenario: AWD ZAR Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to awd
+    And I set the "transAmount.currencyCode" property to ZAR
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "AsiaWebDirect"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "ZAR"
+
+
+  @endpoint
+  Scenario: TVL AUD Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to tvl
+    And I set the "transAmount.currencyCode" property to AUD
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "TravelAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "AUD"
+
+
+  @endpoint
+  Scenario: TVL AUD Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to tvl
+    And I set the "transAmount.currencyCode" property to AUD
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "TravelAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "AUD"
+
+
+  @endpoint
+  Scenario: TVL CAD Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to tvl
+    And I set the "transAmount.currencyCode" property to CAD
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "TravelAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "CAD"
+
+
+  @endpoint
+  Scenario: TVL CAD Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to tvl
+    And I set the "transAmount.currencyCode" property to CAD
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "TravelAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "CAD"
+
+
+  @endpoint
+  Scenario: TVL CHF Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to tvl
+    And I set the "transAmount.currencyCode" property to CHF
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "TravelAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "CHF"
+
+
+  @endpoint
+  Scenario: TVL CHF Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to tvl
+    And I set the "transAmount.currencyCode" property to CHF
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "TravelAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "CHF"
+
+
+  @endpoint
+  Scenario: TVL DKK Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to tvl
+    And I set the "transAmount.currencyCode" property to DKK
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "TravelAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "DKK"
+
+
+  @endpoint
+  Scenario: TVL DKK Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to tvl
+    And I set the "transAmount.currencyCode" property to DKK
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "TravelAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "DKK"
+
+
+  @endpoint
+  Scenario: TVL EUR Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to tvl
+    And I set the "transAmount.currencyCode" property to EUR
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "TravelAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "EUR"
+
+
+  @endpoint
+  Scenario: TVL EUR Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to tvl
+    And I set the "transAmount.currencyCode" property to EUR
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "TravelAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "EUR"
+
+
+  @endpoint
+  Scenario: TVL GBP Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to tvl
+    And I set the "transAmount.currencyCode" property to GBP
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "TravelAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "GBP"
+
+
+  @endpoint
+  Scenario: TVL GBP Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to tvl
+    And I set the "transAmount.currencyCode" property to GBP
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "TravelAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "GBP"
+
+
+  @endpoint
+  Scenario: TVL HKD Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to tvl
+    And I set the "transAmount.currencyCode" property to HKD
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "TravelAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "HKD"
+
+
+  @endpoint
+  Scenario: TVL HKD Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to tvl
+    And I set the "transAmount.currencyCode" property to HKD
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "TravelAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "HKD"
+
+
+  @endpoint
+  Scenario: TVL JPY Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to tvl
+    And I set the "transAmount.currencyCode" property to JPY
+    And I set the "transAmount.amount.scale" property to 1
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "TravelAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "100"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "JPY"
+
+
+  @endpoint
+  Scenario: TVL JPY Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to tvl
+    And I set the "transAmount.currencyCode" property to JPY
+    And I set the "transAmount.amount.scale" property to 1
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "TravelAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "100"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "JPY"
+
+
+  @endpoint
+  Scenario: TVL MYR Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to tvl
+    And I set the "transAmount.currencyCode" property to MYR
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "TravelAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "MYR"
+
+
+  @endpoint
+  Scenario: TVL MYR Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to tvl
+    And I set the "transAmount.currencyCode" property to MYR
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "TravelAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "MYR"
+
+
+  @endpoint
+  Scenario: TVL NZD Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to tvl
+    And I set the "transAmount.currencyCode" property to NZD
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "TravelAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "NZD"
+
+
+  @endpoint
+  Scenario: TVL NZD Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to tvl
+    And I set the "transAmount.currencyCode" property to NZD
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "TravelAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "NZD"
+
+
+  @endpoint
+  Scenario: TVL SGD Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to tvl
+    And I set the "transAmount.currencyCode" property to SGD
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "TravelAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "SGD"
+
+
+  @endpoint
+  Scenario: TVL SGD Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to tvl
+    And I set the "transAmount.currencyCode" property to SGD
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "TravelAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "SGD"
+
+
+  @endpoint
+  Scenario: TVL THB Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to tvl
+    And I set the "transAmount.currencyCode" property to THB
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "TravelAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "THB"
+
+
+  @endpoint
+  Scenario: TVL THB Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to tvl
+    And I set the "transAmount.currencyCode" property to THB
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "TravelAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "THB"
+
+
+  @endpoint
+  Scenario: TVL USD Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to tvl
+    And I set the "transAmount.currencyCode" property to USD
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "TravelAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "USD"
+
+
+  @endpoint
+  Scenario: TVL USD Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to tvl
+    And I set the "transAmount.currencyCode" property to USD
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "TravelAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "USD"
+
+
+  @endpoint
+  Scenario: TVL ZAR Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to tvl
+    And I set the "transAmount.currencyCode" property to ZAR
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "TravelAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "ZAR"
+
+
+  @endpoint
+  Scenario: TVL ZAR Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to tvl
+    And I set the "transAmount.currencyCode" property to ZAR
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "TravelAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "ZAR"
+
+
+  @endpoint
+  Scenario: LMAU AUD Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to lmau
+    And I set the "transAmount.currencyCode" property to AUD
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LastminuteAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "AUD"
+
+
+  @endpoint
+  Scenario: LMAU AUD Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to lmau
+    And I set the "transAmount.currencyCode" property to AUD
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LastminuteAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "AUD"
+
+
+  @endpoint
+  Scenario: LMAU CAD Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to lmau
+    And I set the "transAmount.currencyCode" property to CAD
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LastminuteAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "CAD"
+
+
+  @endpoint
+  Scenario: LMAU CAD Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to lmau
+    And I set the "transAmount.currencyCode" property to CAD
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LastminuteAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "CAD"
+
+
+  @endpoint
+  Scenario: LMAU CHF Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to lmau
+    And I set the "transAmount.currencyCode" property to CHF
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LastminuteAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "CHF"
+
+
+  @endpoint
+  Scenario: LMAU CHF Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to lmau
+    And I set the "transAmount.currencyCode" property to CHF
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LastminuteAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "CHF"
+
+
+  @endpoint
+  Scenario: LMAU DKK Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to lmau
+    And I set the "transAmount.currencyCode" property to DKK
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LastminuteAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "DKK"
+
+
+  @endpoint
+  Scenario: LMAU DKK Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to lmau
+    And I set the "transAmount.currencyCode" property to DKK
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LastminuteAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "DKK"
+
+
+  @endpoint
+  Scenario: LMAU EUR Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to lmau
+    And I set the "transAmount.currencyCode" property to EUR
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LastminuteAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "EUR"
+
+
+  @endpoint
+  Scenario: LMAU EUR Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to lmau
+    And I set the "transAmount.currencyCode" property to EUR
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LastminuteAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "EUR"
+
+
+  @endpoint
+  Scenario: LMAU GBP Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to lmau
+    And I set the "transAmount.currencyCode" property to GBP
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LastminuteAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "GBP"
+
+
+  @endpoint
+  Scenario: LMAU GBP Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to lmau
+    And I set the "transAmount.currencyCode" property to GBP
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LastminuteAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "GBP"
+
+
+  @endpoint
+  Scenario: LMAU HKD Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to lmau
+    And I set the "transAmount.currencyCode" property to HKD
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LastminuteAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "HKD"
+
+
+  @endpoint
+  Scenario: LMAU HKD Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to lmau
+    And I set the "transAmount.currencyCode" property to HKD
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LastminuteAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "HKD"
+
+
+  @endpoint
+  Scenario: LMAU JPY Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to lmau
+    And I set the "transAmount.currencyCode" property to JPY
+    And I set the "transAmount.amount.scale" property to 1
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LastminuteAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "100"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "JPY"
+
+
+  @endpoint
+  Scenario: LMAU JPY Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to lmau
+    And I set the "transAmount.currencyCode" property to JPY
+    And I set the "transAmount.amount.scale" property to 1
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LastminuteAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "100"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "JPY"
+
+
+  @endpoint
+  Scenario: LMAU MYR Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to lmau
+    And I set the "transAmount.currencyCode" property to MYR
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LastminuteAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "MYR"
+
+
+  @endpoint
+  Scenario: LMAU MYR Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to lmau
+    And I set the "transAmount.currencyCode" property to MYR
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LastminuteAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "MYR"
+
+
+  @endpoint
+  Scenario: LMAU NZD Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to lmau
+    And I set the "transAmount.currencyCode" property to NZD
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LastminuteAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "NZD"
+
+
+  @endpoint
+  Scenario: LMAU NZD Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to lmau
+    And I set the "transAmount.currencyCode" property to NZD
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LastminuteAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "NZD"
+
+
+  @endpoint
+  Scenario: LMAU SGD Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to lmau
+    And I set the "transAmount.currencyCode" property to SGD
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LastminuteAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "SGD"
+
+
+  @endpoint
+  Scenario: LMAU SGD Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to lmau
+    And I set the "transAmount.currencyCode" property to SGD
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LastminuteAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "SGD"
+
+
+  @endpoint
+  Scenario: LMAU THB Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to lmau
+    And I set the "transAmount.currencyCode" property to THB
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LastminuteAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "THB"
+
+
+  @endpoint
+  Scenario: LMAU THB Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to lmau
+    And I set the "transAmount.currencyCode" property to THB
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LastminuteAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "THB"
+
+
+  @endpoint
+  Scenario: LMAU USD Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to lmau
+    And I set the "transAmount.currencyCode" property to USD
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LastminuteAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "USD"
+
+
+  @endpoint
+  Scenario: LMAU USD Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to lmau
+    And I set the "transAmount.currencyCode" property to USD
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LastminuteAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "USD"
+
+
+  @endpoint
+  Scenario: LMAU ZAR Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to lmau
+    And I set the "transAmount.currencyCode" property to ZAR
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LastminuteAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "ZAR"
+
+
+  @endpoint
+  Scenario: LMAU ZAR Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to lmau
+    And I set the "transAmount.currencyCode" property to ZAR
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "LastminuteAu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "ZAR"
+
+
+  @endpoint
+  Scenario: IVU AUD Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ivu
+    And I set the "transAmount.currencyCode" property to AUD
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "ivivu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "AUD"
+
+
+  @endpoint
+  Scenario: IVU AUD Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ivu
+    And I set the "transAmount.currencyCode" property to AUD
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "ivivu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "AUD"
+
+
+  @endpoint
+  Scenario: IVU CAD Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ivu
+    And I set the "transAmount.currencyCode" property to CAD
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "ivivu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "CAD"
+
+
+  @endpoint
+  Scenario: IVU CAD Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ivu
+    And I set the "transAmount.currencyCode" property to CAD
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "ivivu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "CAD"
+
+
+  @endpoint
+  Scenario: IVU CHF Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ivu
+    And I set the "transAmount.currencyCode" property to CHF
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "ivivu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "CHF"
+
+
+  @endpoint
+  Scenario: IVU CHF Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ivu
+    And I set the "transAmount.currencyCode" property to CHF
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "ivivu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "CHF"
+
+
+  @endpoint
+  Scenario: IVU DKK Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ivu
+    And I set the "transAmount.currencyCode" property to DKK
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "ivivu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "DKK"
+
+
+  @endpoint
+  Scenario: IVU DKK Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ivu
+    And I set the "transAmount.currencyCode" property to DKK
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "ivivu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "DKK"
+
+
+  @endpoint
+  Scenario: IVU EUR Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ivu
+    And I set the "transAmount.currencyCode" property to EUR
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "ivivu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "EUR"
+
+
+  @endpoint
+  Scenario: IVU EUR Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ivu
+    And I set the "transAmount.currencyCode" property to EUR
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "ivivu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "EUR"
+
+
+  @endpoint
+  Scenario: IVU GBP Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ivu
+    And I set the "transAmount.currencyCode" property to GBP
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "ivivu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "GBP"
+
+
+  @endpoint
+  Scenario: IVU GBP Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ivu
+    And I set the "transAmount.currencyCode" property to GBP
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "ivivu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "GBP"
+
+
+  @endpoint
+  Scenario: IVU HKD Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ivu
+    And I set the "transAmount.currencyCode" property to HKD
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "ivivu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "HKD"
+
+
+  @endpoint
+  Scenario: IVU HKD Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ivu
+    And I set the "transAmount.currencyCode" property to HKD
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "ivivu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "HKD"
+
+
+  @endpoint
+  Scenario: IVU JPY Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ivu
+    And I set the "transAmount.currencyCode" property to JPY
+    And I set the "transAmount.amount.scale" property to 1
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "ivivu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "100"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "JPY"
+
+
+  @endpoint
+  Scenario: IVU JPY Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ivu
+    And I set the "transAmount.currencyCode" property to JPY
+    And I set the "transAmount.amount.scale" property to 1
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "ivivu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "100"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "JPY"
+
+
+  @endpoint
+  Scenario: IVU MYR Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ivu
+    And I set the "transAmount.currencyCode" property to MYR
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "ivivu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "MYR"
+
+
+  @endpoint
+  Scenario: IVU MYR Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ivu
+    And I set the "transAmount.currencyCode" property to MYR
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "ivivu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "MYR"
+
+
+  @endpoint
+  Scenario: IVU NZD Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ivu
+    And I set the "transAmount.currencyCode" property to NZD
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "ivivu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "NZD"
+
+
+  @endpoint
+  Scenario: IVU NZD Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ivu
+    And I set the "transAmount.currencyCode" property to NZD
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "ivivu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "NZD"
+
+
+  @endpoint
+  Scenario: IVU SGD Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ivu
+    And I set the "transAmount.currencyCode" property to SGD
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "ivivu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "SGD"
+
+
+  @endpoint
+  Scenario: IVU SGD Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ivu
+    And I set the "transAmount.currencyCode" property to SGD
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "ivivu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "SGD"
+
+
+  @endpoint
+  Scenario: IVU THB Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ivu
+    And I set the "transAmount.currencyCode" property to THB
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "ivivu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "THB"
+
+
+  @endpoint
+  Scenario: IVU THB Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ivu
+    And I set the "transAmount.currencyCode" property to THB
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "ivivu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "THB"
+
+
+  @endpoint
+  Scenario: IVU USD Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ivu
+    And I set the "transAmount.currencyCode" property to USD
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "ivivu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "USD"
+
+
+  @endpoint
+  Scenario: IVU USD Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ivu
+    And I set the "transAmount.currencyCode" property to USD
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "ivivu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "USD"
+
+
+  @endpoint
+  Scenario: IVU ZAR Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ivu
+    And I set the "transAmount.currencyCode" property to ZAR
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "ivivu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "ZAR"
+
+
+  @endpoint
+  Scenario: IVU ZAR Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to ivu
+    And I set the "transAmount.currencyCode" property to ZAR
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "ivivu"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "ZAR"
+
+
+  @endpoint
+  Scenario: ARN AUD Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to arn
+    And I set the "transAmount.currencyCode" property to AUD
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "WotifArnold"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "AUD"
+
+
+  @endpoint
+  Scenario: ARN AUD Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to arn
+    And I set the "transAmount.currencyCode" property to AUD
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "WotifArnold"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "AUD"
+
+
+  @endpoint
+  Scenario: ARN NZD Visa Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to arn
+    And I set the "transAmount.currencyCode" property to NZD
+    And I set the "creditCard.creditCardType" property to 1
+    And I set the "creditCard.creditCardNumber" property to 4111111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "WotifArnold"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "4111111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "NZD"
+
+
+  @endpoint
+  Scenario: ARN NZD Mastercard Purchase
+    Given I am making a "purchase request"
+    When I set the "transRef.orderSource" property to arn
+    And I set the "transAmount.currencyCode" property to NZD
+    And I set the "creditCard.creditCardType" property to 2
+    And I set the "creditCard.creditCardNumber" property to 5431111111111111
+    Then I post the purchase request
+    And the dps request PostUsername is "WotifArnold"
+    And the dps request CardHolderName is "Jimmy2 Hendrix2"
+    And the dps request CardNumber is "5431111111111111"
+    And the dps request Amount is "1.00"
+    And the dps request DateExpiry is "0117"
+    And the dps request Cvc2 is "234"
+    And the dps request InputCurrency is "NZD"
+</html>
