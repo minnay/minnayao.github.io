@@ -205,7 +205,7 @@ class: center, middle, inverse
 ---
 class: center, middle, inverse
 # edge cases
-![Default-aligned image](images/Edge-of-the-cliff.jpg)
+![Default-aligned image](images/trygothic.jpg)
 
 ---
 class: center, middle, inverse
