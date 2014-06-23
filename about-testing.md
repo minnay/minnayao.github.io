@@ -63,6 +63,7 @@ class: center, middle, inverse
 ---
 class: center, middle, inverse
 # flavors of acceptance tests
+![Default-aligned image](images/movenpick-flavours.jpg)
 
 ---
 class: center, middle, inverse
@@ -180,15 +181,15 @@ class: center, middle, inverse
 There are 280 lines and 496 cucumber tests
 ``` 
 ]
-
----
+<!-- 
 class: center, middle, inverse
 # from 
-# to
+# to -->
 
 ---
 class: center, middle, inverse
 # specifications, not scripts
+![Default-aligned image](images/Koala Specification.gif)
 
 ---
 class: center, middle, inverse
@@ -197,6 +198,7 @@ class: center, middle, inverse
 ---
 class: center, middle, inverse
 # ubiquitous language
+![Default-aligned image](images/dog-talk-cat.jpg)
 
 ---
 class: center, middle, inverse
@@ -245,11 +247,13 @@ class: center, middle, inverse
 ---
 class: center, middle, inverse
 # lemming makes it eaiser
-## a service for test data creation
+## [a service for test data creation]
+![Default-aligned image](images/lemmings.jpeg)
 
 ---
 class: center, middle, inverse
 # integration with lemming
+![Default-aligned image](images/lemming-teeth.jpg)
 
 ---
 class: center, middle, inverse
@@ -378,3 +382,4 @@ def transformToJson(DataSpecModel dataSpecModel) {
 ---
 class: center, middle, inverse
 # enjoy writing acceptance tests with lemming!
+![Default-aligned image](images/lemmingsAwards.png)
