@@ -136,7 +136,7 @@ class: center, middle, inverse
   Scenario: WTF AUD Visa Purchase
     ...
 
-There are 3215 lines
+There are 3215 lines and 224 cucumber tests
 ```
 ]
 
@@ -177,7 +177,7 @@ class: center, middle, inverse
     |    wtf      |     DKK      |    1     |  4111111111111111  | WotifHotels  |
     |    wtf      |     DKK      |    2     |  5431111111111111  | WotifHotels  |
 
-There are 280 lines 
+There are 280 lines and 496 cucumber tests
 ``` 
 ]
 
@@ -186,7 +186,8 @@ class: center, middle, inverse
 # from 
 # to
 
-
+---
+class: center, middle, inverse
 # specifications, not scripts
 
 ---
