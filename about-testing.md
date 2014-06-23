@@ -179,8 +179,9 @@ class: center, middle, inverse
     |    wtf      |     DKK      |    2     |  5431111111111111  | WotifHotels  |
 
 There are 280 lines and 496 cucumber tests
-``` 
+```
 ]
+
 <!-- 
 class: center, middle, inverse
 # from 
@@ -189,11 +190,12 @@ class: center, middle, inverse
 ---
 class: center, middle, inverse
 # specifications, not scripts
-![Default-aligned image](images/Koala Specification.gif)
+![Default-aligned image](images/shoe-specification.jpg)
 
 ---
 class: center, middle, inverse
 # abstract
+![Default-aligned image](images/tree.jpg)
 
 ---
 class: center, middle, inverse
@@ -203,18 +205,22 @@ class: center, middle, inverse
 ---
 class: center, middle, inverse
 # edge cases
+![Default-aligned image](images/Edge-of-the-cliff.jpg)
 
 ---
 class: center, middle, inverse
 # key examples
+![Default-aligned image](images/Her-Keys.jpg)
 
 ---
 class: center, middle, inverse
 # end-to-end flows: 1-3 flows
+![Default-aligned image](images/land-end.jpg)
 
 ---
 class: center, middle, inverse
 # accessible
+![Default-aligned image](images/baby-reading.jpg)
 
 <!-- Specifications, not scripts: she should move to less workflow based scenarios but more specifications about what is needed, as these are easier to understand, more precise and testable;
 Abstract: the specification should be abstract enough to highlight the detail, remove the noise, and not being tied to the implementation of the user interface;
@@ -227,22 +233,27 @@ Accessible: publishing the specifications so stakeholders can easily access the 
 ---
 class: center, middle, inverse
 # living documentation
+![Default-aligned image](images/Book-of-nature-with-tree.jpg)
 
 ---
 class: center, middle, inverse
 # 'three amigos': BA/SME + tester + dev
+![Default-aligned image](images/three-amigos.jpg)
 
 ---
 class: center, middle, inverse
 # easier to maintain
+![Default-aligned image](images/easy-to-maintain.jpg)
 
 ---
 class: center, middle, inverse
 # one source of truth
+![Default-aligned image](images/the-truth.jpg)
 
 ---
 class: center, middle, inverse
 # executable specifications
+![Default-aligned image](images/vehicle-vibration-test.jpg)
 
 ---
 class: center, middle, inverse
