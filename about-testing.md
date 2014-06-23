@@ -261,10 +261,15 @@ class: center, middle, inverse
 ## [a service for test data creation]
 ![Default-aligned image](images/lemmings.jpeg)
 
+
 ---
 class: center, middle, inverse
 # integration with lemming
 ![Default-aligned image](images/lemming-teeth.jpg)
+
+---
+class: center, middle, inverse
+![Default-aligned image](images/lemming-test-data.jpg)
 
 ---
 class: center, middle, inverse
