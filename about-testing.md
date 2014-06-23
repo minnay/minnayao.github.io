@@ -67,11 +67,36 @@ class: center, middle, inverse
 ---
 class: center, middle, inverse
 # automated test scripts
-
+.left[
+```ruby
+open "http://www.wotif.com"
+assertTitle "Wotif.com: Online hotel bookings with instant confirmation"
+pause "2000"
+clickAndWait "link=Australia"
+pause "2000"
+clickAndWait "css=#region-1"
+pause "3000"
+click "//input[@type='submit' and @value='GO']"
+assertTitle "Wotif.com: Sydney hotels"
+```
+]
 ---
 class: center, middle, inverse
 # cucumber
+.left[
+```ruby
+Feature: Wotif hotel reservation 
 
+Scenario: search hotels of a destination
+Given I am on the 'wotif' home page
+When I search for ‘Australia’ hotels
+Then I see the regions for ‘Australia’
+When I select 'Sydney' as my destination
+And I click 'Search'
+Then I see '6' five stars 'wot hotel'
+And I see '15' five stars wotif hotels
+```
+]
 ---
 class: center, middle, inverse
 # specification by example
