@@ -86,8 +86,9 @@ class: center, middle, inverse
 .left[
 ```ruby
 Feature: DPS XML Request Verification
-  These scenarios cover the full matrix of purchase types that wotif can make.   It carries out a purchase or every wotif
-  brand -> card type -> currency and verifies that the produced dps xml contains the expected merchant details
+  These scenarios cover the full matrix of purchase types that wotif can make. 
+  It carries out a purchase or every wotif brand -> card type -> currency and 
+  verifies that the produced dps xml contains the expected merchant details
 
   Background:
     Given dps request xml messages are being trapped
