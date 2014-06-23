@@ -1,6 +1,6 @@
 class: center, middle, inverse
 
-# acceptance test
+# automated acceptance tests
 .footnote[[[ThoughtWorks & Wotif]]()]
 
 ---
