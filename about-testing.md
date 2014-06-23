@@ -253,31 +253,31 @@ class: center, middle, inverse
 
 ---
 class: center, middle, inverse
+# data specification consumed by cucumber tests
 .left[
 ```json
 {
     "property": {
-        "name": "SalesOTADepositTest",
-        "displayName": "Wotif SalesOTA Acceptance Test Property-Deposit",
+        "name": "SalesOTATest",
+        "displayName": "SalesOTA Acceptance Test Property",
         "countryCode": "AU",
-        "accommodationType": "Holiday rental"
+        "accommodationType": "Hotel"
     },
     "roomType": {
         "code": "STD",
-        "description": "SalesOTA Standard Room",
-        "link": "//features//payment//deposit"
+        "description": "SalesOTA Standard Room"
     },
     "availability": {
         "startDate": "sod + 1d",
         "endDate": "sod + 5d",
         "rate": 100
-    },
-    "paymentType":"Deposit"
+    }
 }
 ```]
 
 ---
 class: center, middle, inverse
+# data specification consumed by lemming
 .left[
 ```json
 {
@@ -301,13 +301,80 @@ class: center, middle, inverse
                     "price": 100.0
                 }
             ],
-            "commissions": [
-                {
-                    "orderSource": "wtf",
-                    "percent" : 0.11
-                }
-            ]
+	       "paymentType":"Standard"
         }
     ]
 }
 ```]
+
+---
+class: center, middle, inverse
+# data creation step
+.left[
+```Java
+	Given(~'^a (\\w+) property exists with (.+) type and has availability$') { 
+			String source, String paymentType ->
+
+*    String jsonRequest = prepareLemmingRequestBody(source, paymentType)
+
+    withTransaction {
+*        def response = LemmingClient.postLemmingRequest jsonRequest
+        assert response.getStatus() == StatusCode.SUCCESS
+        ScenarioContext.lemmingResponse = response.getData()
+    }
+  }
+```]
+
+---
+class: center, middle, inverse
+# data creation implementation
+.left[
+```Java
+	private String prepareLemmingRequestBody(String source, String paymentType) {
+	    def type = paymentType
+	    if (!PaymentType.DEPOSIT.equalsIgnoreCase(paymentType)){
+	        type = PaymentType.DEFAULT_PAYMENTTYPE
+	    }
+*	    def testDataSpec = FileLoader.loadDataSpec(source, type)
+	    def transformer = new DataSpecTransformer()
+	    DataSpecModel requestDataModel = transformer.transformToDataSpecModel 
+	    									testDataSpec
+	    requestDataModel.payment.type = paymentType
+	    ScenarioContext.dataSpec = requestDataModel
+*	    def jsonRequest = transformer.transformToJson requestDataModel
+	    return jsonRequest
+	}
+```]
+
+---
+class: center, middle, inverse
+# data creation implementation
+.left[
+```Java
+def transformToJson(DataSpecModel dataSpecModel) {
+        def json = new JsonBuilder()
+        json    targets:getDBTargets(dataSpecModel.targets),
+                name: sanitise(dataSpecModel.property.name),
+                displayname: sanitise(dataSpecModel.property.displayName),
+                countryIsoCode: sanitise(dataSpecModel.property.countryCode),
+                inventoryType: sanitise(dataSpecModel.property.accommodationType),
+                ratePlans: [
+                            [details: [roomType: sanitise(dataSpecModel.
+                            				roomType.code),
+                                       description: sanitise(dataSpecModel.
+                                       		roomType.description)],
+                             rates: [[startDate: sanitise(dataSpecModel.
+                             				availability.startDate),
+                                      endDate: sanitise(dataSpecModel.
+                                      		availability.endDate),
+                                      price: dataSpecModel.availability.rate]],
+                            ...
+                            ]
+                ]
+       
+  }
+```]
+
+---
+class: center, middle, inverse
+# enjoy writing acceptance tests with lemming!
