@@ -135,7 +135,7 @@ class: center, middle, inverse
   Scenario: WTF AUD Visa Purchase
     ...
 
-Notice: there are 3215 lines
+There are 3215 lines
 ```
 ]
 
@@ -176,7 +176,7 @@ class: center, middle, inverse
     |    wtf      |     DKK      |    1     |  4111111111111111  | WotifHotels  |
     |    wtf      |     DKK      |    2     |  5431111111111111  | WotifHotels  |
 
-Notice: there are 280 lines 
+There are 280 lines 
 ``` 
 ]
 
