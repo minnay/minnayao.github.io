@@ -37,19 +37,6 @@ class: center, middle, inverse
 
 ---
 class: center, middle, inverse
-
-# How much should we write?
-![Default-aligned image](images/automated-testing-pyramid.png)
-
-<!-- have a balanced set of automated tests across all levels, with a disciplined approach to having a larger number of smaller specific automated unit/component tests and a smaller number of larger general end-to-end automated tests to ensure all the units and components work together. (My diagram below with attribution). Having just one level of tests, as shown by the stories above, doesn’t work (but if it did I would rather automated unit tests). Just like having a diet of just chocolate doesn’t work, nor does a diet that deprives you of anything sweet or enjoyable (but if I had to choose I would rather a diet of healthy food only than a diet of just chocolate).
-
-Now if we could just convince Salesforce to be more like Airbus and not fly a complete plane (or 50,000 planes) to test everything every-time they make a change and stop David from continuing on his anti-unit pro-system testing anti-intellectual rampage which will result in more damage to our industry than it’s worth.
- -->
-
-
-
----
-class: center, middle, inverse
 # CD isn't possible without significant levels of automation
 ![Default-aligned image](images/cd.jpg)
 
@@ -62,6 +49,16 @@ class: center, middle, inverse
 
 -->
 
+---
+class: center, middle, inverse
+
+# How much should we write?
+![Default-aligned image](images/automated-testing-pyramid.png)
+
+<!-- have a balanced set of automated tests across all levels, with a disciplined approach to having a larger number of smaller specific automated unit/component tests and a smaller number of larger general end-to-end automated tests to ensure all the units and components work together. (My diagram below with attribution). Having just one level of tests, as shown by the stories above, doesn’t work (but if it did I would rather automated unit tests). Just like having a diet of just chocolate doesn’t work, nor does a diet that deprives you of anything sweet or enjoyable (but if I had to choose I would rather a diet of healthy food only than a diet of just chocolate).
+
+Now if we could just convince Salesforce to be more like Airbus and not fly a complete plane (or 50,000 planes) to test everything every-time they make a change and stop David from continuing on his anti-unit pro-system testing anti-intellectual rampage which will result in more damage to our industry than it’s worth.
+ -->
 
 ---
 class: center, middle, inverse
