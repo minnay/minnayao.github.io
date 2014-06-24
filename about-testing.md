@@ -238,10 +238,6 @@ class: center, middle, inverse
 
 ---
 class: center, middle, inverse
-![Default-aligned image](images/TestDoc2.png)
-
----
-class: center, middle, inverse
 # 'three amigos': BA/SME + tester + dev
 ![Default-aligned image](images/three-amigos.jpg)
 
@@ -259,6 +255,10 @@ class: center, middle, inverse
 class: center, middle, inverse
 # executable specifications
 ![Default-aligned image](images/vehicle-vibration-test.jpg)
+
+---
+class: center, middle, inverse
+![Default-aligned image](images/TestDoc2.png)
 
 ---
 class: center, middle, inverse
