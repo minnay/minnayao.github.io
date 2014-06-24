@@ -7,6 +7,7 @@ class: center, middle, inverse
 class: center, middle, inverse
 
 # acceptance test .red[vs] functional test
+## validation .red[vs] verification
 <!-- functional testing: This is a verification activity; did we build a correctly working product? Does the software meet the business requirements?
 
 For this type of testing we have test cases that cover all the possible scenarios we can think of, even if that scenario is unlikely to exist "in the real world". When doing this type of testing, we aim for maximum code coverage. We use any test environment we can grab at the time, it doesn't have to be "production" caliber, so long as it's usable.
@@ -234,6 +235,10 @@ Accessible: publishing the specifications so stakeholders can easily access the 
 class: center, middle, inverse
 # living documentation
 ![Default-aligned image](images/Book-of-nature-with-tree.jpg)
+
+---
+class: center, middle, inverse
+![Default-aligned image](images/TestDoc2.png)
 
 ---
 class: center, middle, inverse
