@@ -277,30 +277,6 @@ class: center, middle, inverse
 
 ---
 class: center, middle, inverse
-# data specification consumed by cucumber tests
-.left[
-```json
-{
-    "property": {
-        "name": "SalesOTATest",
-        "displayName": "SalesOTA Acceptance Test Property",
-        "countryCode": "AU",
-        "accommodationType": "Hotel"
-    },
-    "roomType": {
-        "code": "STD",
-        "description": "SalesOTA Standard Room"
-    },
-    "availability": {
-        "startDate": "sod + 1d",
-        "endDate": "sod + 5d",
-        "rate": 100
-    }
-}
-```]
-
----
-class: center, middle, inverse
 # data specification consumed by lemming
 .left[
 ```json
@@ -331,6 +307,29 @@ class: center, middle, inverse
 }
 ```]
 
+---
+class: center, middle, inverse
+# data specification consumed by cucumber tests
+.left[
+```json
+{
+    "property": {
+        "name": "SalesOTATest",
+        "displayName": "SalesOTA Acceptance Test Property",
+        "countryCode": "AU",
+        "accommodationType": "Hotel"
+    },
+    "roomType": {
+        "code": "STD",
+        "description": "SalesOTA Standard Room"
+    },
+    "availability": {
+        "startDate": "sod + 1d",
+        "endDate": "sod + 5d",
+        "rate": 100
+    }
+}
+```]
 ---
 class: center, middle, inverse
 # data creation step
