@@ -32,6 +32,12 @@ This is by no means standard, and I don't think there is a "standard" definition
 ---
 class: center, middle, inverse
 
+# automated acceptance tests in continuous delivery
+![Default-aligned image](images/acceptance-test-stage.png)
+
+---
+class: center, middle, inverse
+
 # How much should we write?
 ![Default-aligned image](images/automated-testing-pyramid.png)
 
@@ -39,11 +45,7 @@ class: center, middle, inverse
 
 Now if we could just convince Salesforce to be more like Airbus and not fly a complete plane (or 50,000 planes) to test everything every-time they make a change and stop David from continuing on his anti-unit pro-system testing anti-intellectual rampage which will result in more damage to our industry than it’s worth.
  -->
----
-class: center, middle, inverse
 
-# automated acceptance tests in continuous delivery
-![Default-aligned image](images/acceptance-test-stage.png)
 
 
 ---
