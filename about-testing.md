@@ -186,8 +186,8 @@ class: center, middle, inverse
  Scenario: Successful fully paid Reservation
 
     Given the following properties exists:
-      | propName     | displayName                       | country | accommodationType |
-      | SalesOTATest | SalesOTA Acceptance Test Property | AU      | Hotel             |
+      | propName     | displayName  | country | accommodationType |
+      | SalesOTATest | SalesOTA     | AU      | Hotel             |
 
     And the following room types exists:
       | propName     | roomTypeCode | name                   |
@@ -198,8 +198,8 @@ class: center, middle, inverse
       | SalesOTATest | STD          | sod + 1d | sod + 5d | 100            |
 
     When I make the following Reservation request:
-      | propName     | roomTypeCode | adults | children | start    | end      | totalAmount |
-      | SalesOTATest | STD          | 2      | 0        | sod + 1d | sod + 2d | 104.95      |
+      | propName     | roomTypeCode | adults | children | start    | end      |
+      | SalesOTATest | STD          | 2      | 0        | sod + 1d | sod + 2d |
 
     Then I receive the following Reservation response:
       | propName     | roomTypeCode | chargedAmount |
