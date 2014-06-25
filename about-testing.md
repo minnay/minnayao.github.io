@@ -212,7 +212,8 @@ class: center, middle, inverse
 # after
 .left[
 ```ruby
- Scenario Outline: Successful fully paid Reservation for all payment types for direct Wotif inventory
+ Scenario Outline: Successful fully paid Reservation for all payment types 
+                   for direct Wotif inventory
     Given a Wotif property exists with <payment> type and has availability
     When I make a fully paid booking request
     Then the booking is successful
