@@ -183,6 +183,54 @@ class: center, middle, inverse
 # before
 .left[
 ```ruby
+ Scenario: Successful fully paid Reservation
+
+    Given the following properties exists:
+      | propName     | displayName                       | country | accommodationType |
+      | SalesOTATest | SalesOTA Acceptance Test Property | AU      | Hotel             |
+
+    And the following room types exists:
+      | propName     | roomTypeCode | name                   |
+      | SalesOTATest | STD          | SalesOTA Standard Room |
+
+    And the following availability exists:
+      | propName     | roomTypeCode | start    | end      | advertisedRate |
+      | SalesOTATest | STD          | sod + 1d | sod + 5d | 100            |
+
+    When I make the following Reservation request:
+      | propName     | roomTypeCode | adults | children | start    | end      | totalAmount |
+      | SalesOTATest | STD          | 2      | 0        | sod + 1d | sod + 2d | 104.95      |
+
+    Then I receive the following Reservation response:
+      | propName     | roomTypeCode | chargedAmount |
+      | SalesOTATest | STD          | 104.95        |
+```
+]      
+
+---
+class: center, middle, inverse
+# after
+.left[
+```ruby
+ Scenario Outline: Successful fully paid Reservation for all payment types for direct Wotif inventory
+    Given a Wotif property exists with <payment> type and has availability
+    When I make a fully paid booking request
+    Then the booking is successful
+    And booking was made for <payment> type
+   Examples:
+    | payment               |
+    | Standard              |
+    | RA3                   |
+    | VCC Standard          |
+    | VCC Advance Purchase  |
+```
+]  
+
+---
+class: center, middle, inverse
+# before
+.left[
+```ruby
 Feature: DPS XML Request Verification
   These scenarios cover the full matrix of purchase types that wotif can make. 
   It carries out a purchase or every wotif brand -> card type -> currency and 
