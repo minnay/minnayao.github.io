@@ -33,7 +33,7 @@ This is by no means standard, and I don't think there is a "standard" definition
 class: center, middle, inverse
 
 # automated acceptance tests in continuous delivery
-![Default-aligned image](images/acceptance-test-stage.png)
+![Default-aligned image](images/build-pipeline2.png)
 
 ---
 class: center, middle, inverse
