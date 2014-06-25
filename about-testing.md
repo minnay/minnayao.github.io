@@ -70,20 +70,117 @@ class: center, middle, inverse
 # automated test scripts
 .left[
 ```script
-open "http://www.wotif.com"
-assertTitle "Wotif.com: Online hotel bookings with instant confirmation"
+open "htt p://beautifultea.com"
+assertTitle "Beautiful Tea"
 pause "2000"
-clickAndWait "link=Australia"
-pause "2000"
-clickAndWait "css=#region-1"
+clickAndWait "link=Teas"
 pause "3000"
-click "//input[@type='submit' and @value='GO']"
-assertTitle "Wotif.com: Sydney hotels"
+assertTitle "Range of Teas"
+clickAndWait "link=Byron Breakfast"
+assertTitle "Byron Breakfast"
+click "//input[@name='buy' and @value='1']"
+type "quantity", "6"
+clickAndWait "//input[@value='Add to cart']"
+assertTitle "Beautiful Tea Cart"
 ```
 ]
+
 ---
 class: center, middle, inverse
 # cucumber
+.left[
+```ruby
+Feature: Beautiful Tea Shipping
+
+Scenario: Free shipping in Australia
+Given I am on the Beautiful Tea home page
+When I search for ‘Byron Breakfast’ tea
+Then I see the page for ‘Byron Breakfast’ tea
+When I add ‘Byron Breakfast’ tea to my cart
+And I select 10 as the quantity
+Then I see 10 x ‘Byron Breakfast’ tea in my cart
+When I select ‘Check Out’
+And I enter my country as ‘Australia’
+Then I see the total including GST
+And I see that I am eligible for free shipping
+```
+]
+
+---
+class: center, middle, inverse
+.left[
+```ruby
+Scenario: No free shipping outside Australia
+Given I am on the Beautiful Tea home page
+When I search for ‘Byron Breakfast’ tea
+Then I see the page for ‘Byron Breakfast’ tea
+When I add ‘Byron Breakfast’ tea to my cart
+And I select 10 as the quantity
+Then I see 10 x ‘Byron Breakfast’ tea in my cart
+When I select ‘Check Out’
+And I enter my country as ‘New Zealand’
+Then I see the total without GST
+And I see that I am not eligible for free shipping
+```
+]
+
+---
+class: center, middle, inverse
+.left[
+```ruby
+Scenario: No free shipping in Australia
+Given I am on the Beautiful Tea home page
+When I search for ‘Byron Breakfast’ tea
+Then I see the page for ‘Byron Breakfast’ tea
+When I add ‘Byron Breakfast’ tea to my cart
+And I select 1 as the quantity
+Then I see 1 x ‘Byron Breakfast’ tea in my cart
+When I select ‘Check Out’
+And I enter my country as ‘Australia’
+Then I see the total including GST
+And I see that I am not eligible for free shipping
+```
+]
+
+---
+class: center, middle, inverse
+# specification by example
+
+
+---
+class: center, middle, inverse
+.left[
+```ruby
+Feature: Beautiful Tea Shipping Costs
+  * Australian customers pay GST
+  * Overseas customers don’t pay GST
+  * Australian customers get free shipping for orders $100 and above
+  * Overseas customers all pay the same shipping rate regardless of order size
+
+Scenario: Calculate GST status and shipping rate
+  Given the customer is from 
+  When the customer’s order totals 
+  Then the customer 
+  And they are charged 
+
+Examples:
+| customer’s country |pays GST | order total | shipping rate          |
+| Australia          |Must     | $99.99      | Standard Domestic      |
+| Australia          |Must     | $100.00     | Free                   |
+| New Zealand        |Must Not | $99.99      | Standard International |
+| New Zealand        |Must Not | $100.00     | Standard International |
+| Zimbawbe           |Must Not | $100.00     | Standard International |
+```
+]
+
+
+---
+class: center, middle, inverse
+# real example
+
+---
+class: center, middle, inverse
+# before
 .left[
 ```ruby
 Feature: DPS XML Request Verification
@@ -143,10 +240,7 @@ There are 3215 lines and 224 cucumber tests
 
 ---
 class: center, middle, inverse
-# specification by example
-
----
-class: center, middle, inverse
+# after
 .left[
 ```ruby
 @endpoint
@@ -182,10 +276,9 @@ There are 280 lines and 496 cucumber tests
 ```
 ]
 
-<!-- 
+---
 class: center, middle, inverse
-# from 
-# to -->
+# some principles
 
 ---
 class: center, middle, inverse
@@ -195,40 +288,50 @@ class: center, middle, inverse
 ---
 class: center, middle, inverse
 # abstract
-![Default-aligned image](images/tree.jpg)
+![Default-aligned image](images/Quinces_by_the_sea_Jeffrey_Smart.jpg)
 
 ---
 class: center, middle, inverse
 # ubiquitous language
 ![Default-aligned image](images/dog-talk-cat.jpg)
+<!-- Specifications, not scripts: she should move to less workflow based scenarios but more specifications about what is needed, as these are easier to understand, more precise and testable;
+-->
 
 ---
 class: center, middle, inverse
 # edge cases
 ![Default-aligned image](images/trygothic.jpg)
-
+<!--
+    Abstract: the specification should be abstract enough to highlight the detail, remove the noise, and not being tied to the implementation of the user interface;
+Ubiquitous language: the language used by the team and specifications should be consistent throughout the development process to ensure a shared understanding;
+Edge cases: unusual variances should be specified to ensure clarity of expectations: “things that seem obvious kill us, if something sounds obvious, that’s where the danger is”;
+-->
 ---
 class: center, middle, inverse
 # key examples
 ![Default-aligned image](images/Her-Keys.jpg)
-
+<!--
+Key examples: each decision point should have a few key examples, and not more, so it is clear what is expected. These can be created by focussing on the differences between existing scenarios;
+-->
 ---
 class: center, middle, inverse
 # end-to-end flows: 1-3 flows
 ![Default-aligned image](images/land-end.jpg)
+<!--
+End-to-End flows: only a few (1-3) end-to-end flows, not a combination of every decision point combination
+-->
 
 ---
 class: center, middle, inverse
 # accessible
 ![Default-aligned image](images/baby-reading.jpg)
 
-<!-- Specifications, not scripts: she should move to less workflow based scenarios but more specifications about what is needed, as these are easier to understand, more precise and testable;
-Abstract: the specification should be abstract enough to highlight the detail, remove the noise, and not being tied to the implementation of the user interface;
-Ubiquitous language: the language used by the team and specifications should be consistent throughout the development process to ensure a shared understanding;
-Edge cases: unusual variances should be specified to ensure clarity of expectations: “things that seem obvious kill us, if something sounds obvious, that’s where the danger is”;
-Key examples: each decision point should have a few key examples, and not more, so it is clear what is expected. These can be created by focussing on the differences between existing scenarios;
-End-to-End flows: only a few (1-3) end-to-end flows, not a combination of every decision point combination
+<!--
 Accessible: publishing the specifications so stakeholders can easily access the latest versions. -->
+
+---
+class: center, middle, inverse
+#  utimately we want ...
 
 ---
 class: center, middle, inverse
@@ -237,24 +340,29 @@ class: center, middle, inverse
 
 ---
 class: center, middle, inverse
-# 'three amigos': BA/SME + tester + dev
+# collaboration: 'three amigos' 
+## [BA/SME + tester + dev]
 ![Default-aligned image](images/three-amigos.jpg)
+<!-- Now that collaboration had begun on creating specifications, these became more and more of the focus point for any change. Often Madison would use ad-hoc conversations to collaborate and evolve these specifications, as well as ‘three amigos’ sessions, consisting of a BA/SME, a tester and a programmer. Everyone began feeling responsible for quality. -->
 
 ---
 class: center, middle, inverse
-# easier to maintain
+# shared understanding: easier to maintain
 ![Default-aligned image](images/easy-to-maintain.jpg)
+<!-- the specifications and associated acceptance tests much easier to maintain as everyone understood them and they were less connected to the actual online ordering implementation. -->
 
 ---
 class: center, middle, inverse
 # one source of truth
 ![Default-aligned image](images/the-truth.jpg)
+<!-- the customer support had one source of truth, and the programmer found herself performing less and less system archeology to answer a simple question about what the online ordering system actually did. -->
 
 ---
 class: center, middle, inverse
-# executable specifications
+# up to date executable specifications
 ![Default-aligned image](images/vehicle-vibration-test.jpg)
-
+<!-- Most importantly, as there were always up to date executable specifications, this meant it was much easier to update the system to support the business without the risk of introducing unintended issues. Owners Janet and Dave were able to specify the new online ordering functionality for resellers and this was easily incorporated into the application by the team. Delivering the new functionality quickly and without issue meant the business was able to grow.
+ -->
 ---
 class: center, middle, inverse
 ![Default-aligned image](images/TestDoc2.png)
@@ -263,13 +371,12 @@ class: center, middle, inverse
 class: center, middle, inverse
 # lemming makes it eaiser
 ## [a service for test data creation]
-![Default-aligned image](images/lemmings.jpeg)
-
+![Default-aligned image](images/Lemmings-200x200.jpg)
 
 ---
 class: center, middle, inverse
 # integration with lemming
-![Default-aligned image](images/lemming-teeth.jpg)
+![Default-aligned image](images/lemming-hand.jpg)
 
 ---
 class: center, middle, inverse
@@ -376,20 +483,20 @@ class: center, middle, inverse
 ```Java
 def transformToJson(DataSpecModel dataSpecModel) {
         def json = new JsonBuilder()
-        json    targets:getDBTargets(dataSpecModel.targets),
-                name: sanitise(dataSpecModel.property.name),
-                displayname: sanitise(dataSpecModel.property.displayName),
-                countryIsoCode: sanitise(dataSpecModel.property.countryCode),
-                inventoryType: sanitise(dataSpecModel.property.accommodationType),
+        json    targets: dataSpecModel.targets,
+                name: dataSpecModel.property.name,
+                displayname: dataSpecModel.property.displayName,
+                countryIsoCode: dataSpecModel.property.countryCode,
+                inventoryType: dataSpecModel.property.accommodationType,
                 ratePlans: [
-                            [details: [roomType: sanitise(dataSpecModel.
-                            				roomType.code),
-                                       description: sanitise(dataSpecModel.
-                                       		roomType.description)],
-                             rates: [[startDate: sanitise(dataSpecModel.
-                             				availability.startDate),
-                                      endDate: sanitise(dataSpecModel.
-                                      		availability.endDate),
+                            [details: [roomType: dataSpecModel.
+                            				roomType.code,
+                                       description: dataSpecModel.
+                                       		roomType.description],
+                             rates: [[startDate: dataSpecModel.
+                             				availability.startDate,
+                                      endDate: dataSpecModel.
+                                      		availability.endDate,
                                       price: dataSpecModel.availability.rate]],
                             ...
                             ]
@@ -397,6 +504,13 @@ def transformToJson(DataSpecModel dataSpecModel) {
        
   }
 ```]
+
+---
+class: center, middle, inverse
+# contacts
+## [Kate Gamblin]
+## [Pete Capra]
+## [Mark Wakabayashi]
 
 ---
 class: center, middle, inverse
