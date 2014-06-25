@@ -7,6 +7,7 @@ class: center, middle, inverse
 class: center, middle, inverse
 
 # acceptance test .red[vs] functional test
+## [validation .red[vs] verification]
 <!-- functional testing: This is a verification activity; did we build a correctly working product? Does the software meet the business requirements?
 
 For this type of testing we have test cases that cover all the possible scenarios we can think of, even if that scenario is unlikely to exist "in the real world". When doing this type of testing, we aim for maximum code coverage. We use any test environment we can grab at the time, it doesn't have to be "production" caliber, so long as it's usable.
@@ -31,19 +32,8 @@ This is by no means standard, and I don't think there is a "standard" definition
 ---
 class: center, middle, inverse
 
-# How much should we write?
-![Default-aligned image](images/automated-testing-pyramid.png)
-
-<!-- have a balanced set of automated tests across all levels, with a disciplined approach to having a larger number of smaller specific automated unit/component tests and a smaller number of larger general end-to-end automated tests to ensure all the units and components work together. (My diagram below with attribution). Having just one level of tests, as shown by the stories above, doesn’t work (but if it did I would rather automated unit tests). Just like having a diet of just chocolate doesn’t work, nor does a diet that deprives you of anything sweet or enjoyable (but if I had to choose I would rather a diet of healthy food only than a diet of just chocolate).
-
-Now if we could just convince Salesforce to be more like Airbus and not fly a complete plane (or 50,000 planes) to test everything every-time they make a change and stop David from continuing on his anti-unit pro-system testing anti-intellectual rampage which will result in more damage to our industry than it’s worth.
- -->
----
-class: center, middle, inverse
-
 # automated acceptance tests in continuous delivery
 ![Default-aligned image](images/acceptance-test-stage.png)
-
 
 ---
 class: center, middle, inverse
@@ -59,30 +49,138 @@ class: center, middle, inverse
 
 -->
 
+---
+class: center, middle, inverse
+
+# How much should we write?
+![Default-aligned image](images/automated-testing-pyramid.png)
+
+<!-- have a balanced set of automated tests across all levels, with a disciplined approach to having a larger number of smaller specific automated unit/component tests and a smaller number of larger general end-to-end automated tests to ensure all the units and components work together. (My diagram below with attribution). Having just one level of tests, as shown by the stories above, doesn’t work (but if it did I would rather automated unit tests). Just like having a diet of just chocolate doesn’t work, nor does a diet that deprives you of anything sweet or enjoyable (but if I had to choose I would rather a diet of healthy food only than a diet of just chocolate).
+
+Now if we could just convince Salesforce to be more like Airbus and not fly a complete plane (or 50,000 planes) to test everything every-time they make a change and stop David from continuing on his anti-unit pro-system testing anti-intellectual rampage which will result in more damage to our industry than it’s worth.
+ -->
 
 ---
 class: center, middle, inverse
 # flavors of acceptance tests
+![Default-aligned image](images/movenpick-flavours.jpg)
 
 ---
 class: center, middle, inverse
 # automated test scripts
 .left[
 ```script
-open "http://www.wotif.com"
-assertTitle "Wotif.com: Online hotel bookings with instant confirmation"
+open "htt p://beautifultea.com"
+assertTitle "Beautiful Tea"
 pause "2000"
-clickAndWait "link=Australia"
-pause "2000"
-clickAndWait "css=#region-1"
+clickAndWait "link=Teas"
 pause "3000"
-click "//input[@type='submit' and @value='GO']"
-assertTitle "Wotif.com: Sydney hotels"
+assertTitle "Range of Teas"
+clickAndWait "link=Byron Breakfast"
+assertTitle "Byron Breakfast"
+click "//input[@name='buy' and @value='1']"
+type "quantity", "6"
+clickAndWait "//input[@value='Add to cart']"
+assertTitle "Beautiful Tea Cart"
 ```
 ]
+
 ---
 class: center, middle, inverse
 # cucumber
+.left[
+```ruby
+Feature: Beautiful Tea Shipping
+
+Scenario: Free shipping in Australia
+Given I am on the Beautiful Tea home page
+When I search for ‘Byron Breakfast’ tea
+Then I see the page for ‘Byron Breakfast’ tea
+When I add ‘Byron Breakfast’ tea to my cart
+And I select 10 as the quantity
+Then I see 10 x ‘Byron Breakfast’ tea in my cart
+When I select ‘Check Out’
+And I enter my country as ‘Australia’
+Then I see the total including GST
+And I see that I am eligible for free shipping
+```
+]
+
+---
+class: center, middle, inverse
+.left[
+```ruby
+Scenario: No free shipping outside Australia
+Given I am on the Beautiful Tea home page
+When I search for ‘Byron Breakfast’ tea
+Then I see the page for ‘Byron Breakfast’ tea
+When I add ‘Byron Breakfast’ tea to my cart
+And I select 10 as the quantity
+Then I see 10 x ‘Byron Breakfast’ tea in my cart
+When I select ‘Check Out’
+And I enter my country as ‘New Zealand’
+Then I see the total without GST
+And I see that I am not eligible for free shipping
+```
+]
+
+---
+class: center, middle, inverse
+.left[
+```ruby
+Scenario: No free shipping in Australia
+Given I am on the Beautiful Tea home page
+When I search for ‘Byron Breakfast’ tea
+Then I see the page for ‘Byron Breakfast’ tea
+When I add ‘Byron Breakfast’ tea to my cart
+And I select 1 as the quantity
+Then I see 1 x ‘Byron Breakfast’ tea in my cart
+When I select ‘Check Out’
+And I enter my country as ‘Australia’
+Then I see the total including GST
+And I see that I am not eligible for free shipping
+```
+]
+
+---
+class: center, middle, inverse
+# specification by example
+
+
+---
+class: center, middle, inverse
+.left[
+```ruby
+Feature: Beautiful Tea Shipping Costs
+  * Australian customers pay GST
+  * Overseas customers don’t pay GST
+  * Australian customers get free shipping for orders $100 and above
+  * Overseas customers all pay the same shipping rate regardless of order size
+
+Scenario: Calculate GST status and shipping rate
+  Given the customer is from 
+  When the customer’s order totals 
+  Then the customer 
+  And they are charged 
+
+Examples:
+| customer’s country |pays GST | order total | shipping rate          |
+| Australia          |Must     | $99.99      | Standard Domestic      |
+| Australia          |Must     | $100.00     | Free                   |
+| New Zealand        |Must Not | $99.99      | Standard International |
+| New Zealand        |Must Not | $100.00     | Standard International |
+| Zimbawbe           |Must Not | $100.00     | Standard International |
+```
+]
+
+
+---
+class: center, middle, inverse
+# real example
+
+---
+class: center, middle, inverse
+# before
 .left[
 ```ruby
 Feature: DPS XML Request Verification
@@ -142,10 +240,7 @@ There are 3215 lines and 224 cucumber tests
 
 ---
 class: center, middle, inverse
-# specification by example
-
----
-class: center, middle, inverse
+# after
 .left[
 ```ruby
 @endpoint
@@ -178,102 +273,114 @@ class: center, middle, inverse
     |    wtf      |     DKK      |    2     |  5431111111111111  | WotifHotels  |
 
 There are 280 lines and 496 cucumber tests
-``` 
+```
 ]
 
 ---
 class: center, middle, inverse
-# from 
-# to
+# some principles
 
 ---
 class: center, middle, inverse
 # specifications, not scripts
+![Default-aligned image](images/shoe-specification.jpg)
 
 ---
 class: center, middle, inverse
 # abstract
+![Default-aligned image](images/Quinces_by_the_sea_Jeffrey_Smart.jpg)
 
 ---
 class: center, middle, inverse
 # ubiquitous language
+![Default-aligned image](images/dog-talk-cat.jpg)
+<!-- Specifications, not scripts: she should move to less workflow based scenarios but more specifications about what is needed, as these are easier to understand, more precise and testable;
+-->
 
 ---
 class: center, middle, inverse
 # edge cases
-
+![Default-aligned image](images/trygothic.jpg)
+<!--
+    Abstract: the specification should be abstract enough to highlight the detail, remove the noise, and not being tied to the implementation of the user interface;
+Ubiquitous language: the language used by the team and specifications should be consistent throughout the development process to ensure a shared understanding;
+Edge cases: unusual variances should be specified to ensure clarity of expectations: “things that seem obvious kill us, if something sounds obvious, that’s where the danger is”;
+-->
 ---
 class: center, middle, inverse
 # key examples
-
+![Default-aligned image](images/Her-Keys.jpg)
+<!--
+Key examples: each decision point should have a few key examples, and not more, so it is clear what is expected. These can be created by focussing on the differences between existing scenarios;
+-->
 ---
 class: center, middle, inverse
 # end-to-end flows: 1-3 flows
+![Default-aligned image](images/land-end.jpg)
+<!--
+End-to-End flows: only a few (1-3) end-to-end flows, not a combination of every decision point combination
+-->
 
 ---
 class: center, middle, inverse
 # accessible
+![Default-aligned image](images/baby-reading.jpg)
 
-<!-- Specifications, not scripts: she should move to less workflow based scenarios but more specifications about what is needed, as these are easier to understand, more precise and testable;
-Abstract: the specification should be abstract enough to highlight the detail, remove the noise, and not being tied to the implementation of the user interface;
-Ubiquitous language: the language used by the team and specifications should be consistent throughout the development process to ensure a shared understanding;
-Edge cases: unusual variances should be specified to ensure clarity of expectations: “things that seem obvious kill us, if something sounds obvious, that’s where the danger is”;
-Key examples: each decision point should have a few key examples, and not more, so it is clear what is expected. These can be created by focussing on the differences between existing scenarios;
-End-to-End flows: only a few (1-3) end-to-end flows, not a combination of every decision point combination
+<!--
 Accessible: publishing the specifications so stakeholders can easily access the latest versions. -->
 
 ---
 class: center, middle, inverse
+#  utimately we want ...
+
+---
+class: center, middle, inverse
 # living documentation
+![Default-aligned image](images/Book-of-nature-with-tree.jpg)
 
 ---
 class: center, middle, inverse
-# 'three amigos': BA/SME + tester + dev
+# collaboration: 'three amigos' 
+## [BA/SME + tester + dev]
+![Default-aligned image](images/three-amigos.jpg)
+<!-- Now that collaboration had begun on creating specifications, these became more and more of the focus point for any change. Often Madison would use ad-hoc conversations to collaborate and evolve these specifications, as well as ‘three amigos’ sessions, consisting of a BA/SME, a tester and a programmer. Everyone began feeling responsible for quality. -->
 
 ---
 class: center, middle, inverse
-# easier to maintain
+# shared understanding: easier to maintain
+![Default-aligned image](images/easy-to-maintain.jpg)
+<!-- the specifications and associated acceptance tests much easier to maintain as everyone understood them and they were less connected to the actual online ordering implementation. -->
 
 ---
 class: center, middle, inverse
 # one source of truth
+![Default-aligned image](images/the-truth.jpg)
+<!-- the customer support had one source of truth, and the programmer found herself performing less and less system archeology to answer a simple question about what the online ordering system actually did. -->
 
 ---
 class: center, middle, inverse
-# executable specifications
+# up to date executable specifications
+![Default-aligned image](images/vehicle-vibration-test.jpg)
+<!-- Most importantly, as there were always up to date executable specifications, this meant it was much easier to update the system to support the business without the risk of introducing unintended issues. Owners Janet and Dave were able to specify the new online ordering functionality for resellers and this was easily incorporated into the application by the team. Delivering the new functionality quickly and without issue meant the business was able to grow.
+ -->
+---
+class: center, middle, inverse
+![Default-aligned image](images/TestDoc2.png)
 
 ---
 class: center, middle, inverse
 # lemming makes it eaiser
-## a service for test data creation
+## [a service for test data creation]
+![Default-aligned image](images/Lemmings-200x200.jpg)
 
 ---
 class: center, middle, inverse
 # integration with lemming
+![Default-aligned image](images/lemming-hand.jpg)
 
 ---
 class: center, middle, inverse
-# data specification consumed by cucumber tests
-.left[
-```json
-{
-    "property": {
-        "name": "SalesOTATest",
-        "displayName": "SalesOTA Acceptance Test Property",
-        "countryCode": "AU",
-        "accommodationType": "Hotel"
-    },
-    "roomType": {
-        "code": "STD",
-        "description": "SalesOTA Standard Room"
-    },
-    "availability": {
-        "startDate": "sod + 1d",
-        "endDate": "sod + 5d",
-        "rate": 100
-    }
-}
-```]
+![Default-aligned image](images/lemming-test-data.jpg)
 
 ---
 class: center, middle, inverse
@@ -307,6 +414,29 @@ class: center, middle, inverse
 }
 ```]
 
+---
+class: center, middle, inverse
+# data specification consumed by cucumber tests
+.left[
+```json
+{
+    "property": {
+        "name": "SalesOTATest",
+        "displayName": "SalesOTA Acceptance Test Property",
+        "countryCode": "AU",
+        "accommodationType": "Hotel"
+    },
+    "roomType": {
+        "code": "STD",
+        "description": "SalesOTA Standard Room"
+    },
+    "availability": {
+        "startDate": "sod + 1d",
+        "endDate": "sod + 5d",
+        "rate": 100
+    }
+}
+```]
 ---
 class: center, middle, inverse
 # data creation step
@@ -353,20 +483,20 @@ class: center, middle, inverse
 ```Java
 def transformToJson(DataSpecModel dataSpecModel) {
         def json = new JsonBuilder()
-        json    targets:getDBTargets(dataSpecModel.targets),
-                name: sanitise(dataSpecModel.property.name),
-                displayname: sanitise(dataSpecModel.property.displayName),
-                countryIsoCode: sanitise(dataSpecModel.property.countryCode),
-                inventoryType: sanitise(dataSpecModel.property.accommodationType),
+        json    targets: dataSpecModel.targets,
+                name: dataSpecModel.property.name,
+                displayname: dataSpecModel.property.displayName,
+                countryIsoCode: dataSpecModel.property.countryCode,
+                inventoryType: dataSpecModel.property.accommodationType,
                 ratePlans: [
-                            [details: [roomType: sanitise(dataSpecModel.
-                            				roomType.code),
-                                       description: sanitise(dataSpecModel.
-                                       		roomType.description)],
-                             rates: [[startDate: sanitise(dataSpecModel.
-                             				availability.startDate),
-                                      endDate: sanitise(dataSpecModel.
-                                      		availability.endDate),
+                            [details: [roomType: dataSpecModel.
+                            				roomType.code,
+                                       description: dataSpecModel.
+                                       		roomType.description],
+                             rates: [[startDate: dataSpecModel.
+                             				availability.startDate,
+                                      endDate: dataSpecModel.
+                                      		availability.endDate,
                                       price: dataSpecModel.availability.rate]],
                             ...
                             ]
@@ -377,4 +507,12 @@ def transformToJson(DataSpecModel dataSpecModel) {
 
 ---
 class: center, middle, inverse
+# contacts
+## [Kate Gamblin]
+## [Pete Capra]
+## [Mark Wakabayashi]
+
+---
+class: center, middle, inverse
 # enjoy writing acceptance tests with lemming!
+![Default-aligned image](images/lemmingsAwards.png)
