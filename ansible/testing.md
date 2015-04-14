@@ -11,12 +11,13 @@ the command/instructruction we type in prod enviroment will work not bring down 
 
 ---
 class: center, middle, inverse
-# Operations always manually test everything in production!
+# Ops always manually test everything in production!
 <!-- instructions, and procedures are in the head -->
 
 ---
 class: center, middle, inverse
-# What about automated testing? What about testing prior to production?
+# What about automated testing for infrastructure? 
+# What about testing prior to production?
 <!-- instructions, and procedures are in the head -->
 
 ---
