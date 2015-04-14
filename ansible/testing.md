@@ -137,6 +137,7 @@ You can use success or failure of the playbook run to decide whether to add a ma
       delegate_to: 127.0.0.1
 ```
 ]
+
 <!--
 	In the above example, a script is run from the testing server against a remote node prior to bringing it back into the pool. what you can see from the above is that tests are used as a gate – if the “apply_testing_checks” step is not performed, the machine will not go back into the pool.
 
@@ -148,9 +149,14 @@ class: center, middle, inverse
 # Achieving Continuous Deployment
 .left[
 ```ruby
-- Write and use automation to deploy local development VMs
+- Write and use automation to deploy local development VMs or any other VMs/hosts 
+for testing
 - Have a CI system like Jenkins deploy to a stage environment on every code change
 - The deploy job calls testing scripts to pass/fail a build on every deploy
 - If the deploy job succeeds, it runs the same deploy playbook against production inventory
 ```
 ]	
+
+---
+class: center, middle, inverse
+# What to do from here?
