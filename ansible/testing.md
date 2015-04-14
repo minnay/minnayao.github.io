@@ -51,5 +51,106 @@ By incorporating a degree of testing into your deployment workflow, there will b
 ---
 class: center, middle, inverse
 # Check Mode As A Drift Test
-If running a deployment playbook against an existing and live system
+If running a deployment playbook against an existing and live system, using the .red.bold[–check] flag
+<!--  –check mode in Ansible can be used as a layer of testing as well. If running a deployment playbook against an existing system, using the –check flag to the ansible command will report if Ansible thinks it would have had to have made any changes to bring the system into a desired state.
+	This can let you know up front if there is any need to deploy onto the given system. Ordinarily scripts and commands don’t run in check mode, so if you want certain steps to always execute in check mode, such as calls to the script module, add the ‘always_run’ flag:
+-->
 
+---
+class: center, middle, inverse
+# Modules That Are Useful for Testing
+.left[
+```ruby
+
+*- wait_for: host={{ inventory_hostname }} port=22
+*- action: uri url=http://www.example.com return_content=yes
+*- script: test_script2 --parameter value --parameter2 value
+*- assert:
+    that:
+      - "'error' not in cmd_result.stderr"
+*- stat: path=/path/to/something
+```
+]
+---
+class: center, middle, inverse
+# Absolutely .red[No Need] to check return codes of commands. 
+# Ansible is checking them automatically. 
+Rather than checking for a user to exist, consider using the user module to make it exist.
+
+---
+class: center, middle, inverse
+# If writing some degree of basic validation of your application into your playbooks, they will run every time you deploy.
+
+---
+class: center, middle, inverse
+# Testing Lifecycle
+.left[
+```ruby
+
+- Use the same playbook all the time with embedded tests in development
+- Use the playbook to deploy to a stage environment (with the same playbooks) 
+that simulates production
+- Run an integration test battery against stage
+- Deploy to production, with the same integrated tests.
+
+```
+]
+
+---
+class: center, middle, inverse
+# Integration test battery?
+.left[
+```ruby
+- Selenium tests 
+- automated API tests 
+- anything that is not embedded into your Ansible playbooks!
+```
+]
+
+---
+class: center, middle, inverse
+# Rolling Updates pattern
+You can use success or failure of the playbook run to decide whether to add a machine into a load balancer or not
+.left[
+```ruby
+- hosts: webservers
+
+  pre_tasks:
+
+    - name: take out of load balancer pool
+      command: /usr/bin/take_out_of_pool {{ inventory_hostname }}
+      delegate_to: 127.0.0.1
+
+  roles:
+
+     - common
+     - webserver
+
+  tasks:
+*     - script: /srv/qa_team/app_testing_script.sh --server {{ inventory_hostname }}
+*       delegate_to: testing_server
+
+  post_tasks:
+
+    - name: add back to load balancer pool
+      command: /usr/bin/add_back_to_pool {{ inventory_hostname }}
+      delegate_to: 127.0.0.1
+```
+]
+<!--
+	In the above example, a script is run from the testing server against a remote node prior to bringing it back into the pool. what you can see from the above is that tests are used as a gate – if the “apply_testing_checks” step is not performed, the machine will not go back into the pool.
+
+In the event of a problem, fix the few servers that fail using Ansible’s automatically generated retry file to repeat the deploy on just those servers.
+	-->
+
+---
+class: center, middle, inverse
+# Achieving Continuous Deployment
+.left[
+```ruby
+- Write and use automation to deploy local development VMs
+- Have a CI system like Jenkins deploy to a stage environment on every code change
+- The deploy job calls testing scripts to pass/fail a build on every deploy
+- If the deploy job succeeds, it runs the same deploy playbook against production inventory
+```
+]	
