@@ -12,13 +12,16 @@ the command/instructruction we type in prod enviroment will work not bring down 
 
 ---
 class: center, middle, inverse
-# Ops always manually test everything in production!
+# Can't we just always manually test everything in production?
 ![Default-aligned image](ansible/images/test_in_prod.gif)
 
 ---
 class: center, middle, inverse
 # Can we trust human testers?
 ![Default-aligned image](ansible/images/disaster-girl.jpg)
+<!-- 
+A tester will decide what to test, and what not. He will maybe make mistakes during testing. All these problems can be prevented with automated tests
+-->
 
 ---
 class: center, middle, inverse
@@ -28,7 +31,8 @@ class: center, middle, inverse
 
 ---
 class: center, middle, inverse
-# Infrastructure as code makes it possible!
+# Infrastructure as code 
+# makes it possible!
 ![Default-aligned image](ansible/images/infra_as_code.png)
 
 
@@ -111,7 +115,7 @@ In the event of a problem, fix the few servers that fail using Ansible’s autom
 
 ---
 class: center, middle, inverse
-# If writing some degree of basic validation of your application into your playbooks, they will run every time you deploy.
+# basic validation of your application in your playbooks will run .red[every time] you deploy.
 
 ---
 class: center, middle, inverse
@@ -137,13 +141,15 @@ If running a deployment playbook against an existing and live system, using the 
 
 <!--  –check mode in Ansible can be used as a layer of testing as well. If running a deployment playbook against an existing system, using the –check flag to the ansible command will report if Ansible thinks it would have had to have made any changes to bring the system into a desired state.
 	This can let you know up front if there is any need to deploy onto the given system. Ordinarily scripts and commands don’t run in check mode, so if you want certain steps to always execute in check mode, such as calls to the script module, add the ‘always_run’ flag:
+
+  https://t37.net/documenting-your-ansible-roles-interface-and-making-other-people-s-life-easier.html
 -->
 
 ---
 class: center, middle, inverse
 # Absolutely .red[No Need] to check return codes of commands 
 ## .left[Ansible is checking them automatically]
-### .left[e.g., rather than checking for a user to exist, consider using the user module to make it exist]
+### .left[e.g., rather than checking if a user exists, consider the user module to make it exist]
 
 ---
 class: center, middle, inverse
@@ -187,7 +193,8 @@ inventory
 
 ---
 class: center, middle, inverse
-# Wow, Continuous Deployment, can we do it?
+# Wow, .red[Continuous Deployment]
+# Can we do it?
 ![Default-aligned image](ansible/images/cd.gif)
 
 ---
