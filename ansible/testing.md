@@ -159,4 +159,35 @@ for testing
 
 ---
 class: center, middle, inverse
+# Wow, Continuous Deployment, can we do it?
+
+---
+class: center, middle, inverse
+# What does it mean to us?
+
+---
+class: center, middle, inverse
+# It means
+## .red[automated provision]
+## .red[automated tests]
+## .red[fail safe environments]
+## .red[repeatable everything]
+
+---
+class: center, middle, inverse
+# What do we have right now?
+## some automated provision/deployment
+## a little bit of automated tests
+## fail safe environments ... eh?
+## repeatable everything ... eh?
+
+---
+class: center, middle, inverse
 # What to do from here?
+
+---
+class: center, middle, inverse
+## .left[continue to grow and enrich test automation suite]
+## .left[build pipelines for different intentions]
+## .left[make everything visible!]
+
