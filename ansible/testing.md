@@ -1,6 +1,6 @@
 class: center, middle, inverse
 
-# ansible, infrastructure testing and CI
+# Infrastructure Testing with Ansible
 .footnote[[ThoughtWorks & Suncorp]()]
 
 ---
@@ -22,8 +22,8 @@ class: center, middle, inverse
 
 ---
 class: center, middle, inverse
-# What about automated testing for infrastructure? 
 # What about testing prior to production?
+# What about automated testing for infrastructure? 
 ![Default-aligned image](ansible/images/automate_all.png)
 
 ---
@@ -66,32 +66,6 @@ By incorporating a degree of testing into your deployment workflow, there will b
 class: center, middle, inverse
 # “fail-fast” 
 ## embed testing directly in Ansible playbooks
-
----
-class: center, middle, inverse
-# Check Mode As A Drift Test
-If running a deployment playbook against an existing and live system, using the .red.bold[–check] flag
-![Default-aligned image](ansible/images/f8_large.jpg)
-
-<!--  –check mode in Ansible can be used as a layer of testing as well. If running a deployment playbook against an existing system, using the –check flag to the ansible command will report if Ansible thinks it would have had to have made any changes to bring the system into a desired state.
-	This can let you know up front if there is any need to deploy onto the given system. Ordinarily scripts and commands don’t run in check mode, so if you want certain steps to always execute in check mode, such as calls to the script module, add the ‘always_run’ flag:
--->
-
----
-class: center, middle, inverse
-# Modules That Are Useful for Testing
-.left[
-```ruby
-
-*- wait_for: host={{ inventory_hostname }} port=22
-*- action: uri url=http://www.example.com return_content=yes
-*- script: test_script2 --parameter value --parameter2 value
-*- assert:
-    that:
-      - "'error' not in cmd_result.stderr"
-*- stat: path=/path/to/something
-```
-]
 
 ---
 class: center, middle, inverse
@@ -139,6 +113,31 @@ In the event of a problem, fix the few servers that fail using Ansible’s autom
 class: center, middle, inverse
 # If writing some degree of basic validation of your application into your playbooks, they will run every time you deploy.
 
+---
+class: center, middle, inverse
+# Modules That Are Useful for Testing
+.left[
+```ruby
+
+*- wait_for: host={{ inventory_hostname }} port=22
+*- action: uri url=http://www.example.com return_content=yes
+*- script: test_script2 --parameter value --parameter2 value
+*- assert:
+    that:
+      - "'error' not in cmd_result.stderr"
+*- stat: path=/path/to/something
+```
+]
+
+---
+class: center, middle, inverse
+# Check Mode As A Drift Test
+If running a deployment playbook against an existing and live system, using the .red.bold[–check] flag
+![Default-aligned image](ansible/images/f8_large.jpg)
+
+<!--  –check mode in Ansible can be used as a layer of testing as well. If running a deployment playbook against an existing system, using the –check flag to the ansible command will report if Ansible thinks it would have had to have made any changes to bring the system into a desired state.
+	This can let you know up front if there is any need to deploy onto the given system. Ordinarily scripts and commands don’t run in check mode, so if you want certain steps to always execute in check mode, such as calls to the script module, add the ‘always_run’ flag:
+-->
 
 ---
 class: center, middle, inverse
@@ -220,6 +219,11 @@ class: center, middle, inverse
 ## .left[continue to grow and enrich test automation suite]
 ## .left[build pipelines for different intentions]
 ## .left[make everything visible!]
+
+---
+class: center, middle, inverse
+# not the end!
+![Default-aligned image](ansible/images/panda.gif)
 
 ---
 class: center, middle, inverse
