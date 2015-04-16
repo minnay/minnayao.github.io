@@ -136,7 +136,7 @@ class: center, middle, inverse
 ---
 class: center, middle, inverse
 # Check Mode As A Drift Test
-## If running a deployment playbook against an existing and live system, using the .red.bold[–check] flag
+If running a deployment playbook against an existing and live system, using the .red.bold[–check] flag
 ![Default-aligned image](ansible/images/f8_large.jpg)
 
 <!--  –check mode in Ansible can be used as a layer of testing as well. If running a deployment playbook against an existing system, using the –check flag to the ansible command will report if Ansible thinks it would have had to have made any changes to bring the system into a desired state.
