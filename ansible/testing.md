@@ -6,13 +6,19 @@ class: center, middle, inverse
 ---
 class: center, middle, inverse
 # Can we test infrastructure?
+![Default-aligned image](ansible/images/Robots.jpg)
 <!-- yes, of course. ops always manuually test. varification scripts maybe? can we know if 
 the command/instructruction we type in prod enviroment will work not bring down catastrophically any server?-->
 
 ---
 class: center, middle, inverse
 # Ops always manually test everything in production!
-<!-- instructions, and procedures are in the head -->
+![Default-aligned image](ansible/images/test_in_prod.gif)
+
+---
+class: center, middle, inverse
+# Can we trust human testers?
+![Default-aligned image](ansible/images/disaster-girl.jpg)
 
 ---
 class: center, middle, inverse
@@ -23,16 +29,11 @@ class: center, middle, inverse
 ---
 class: center, middle, inverse
 # Infrastructure as code makes it possible!
-<!-- instructions, and procedures are in the head -->
+![Default-aligned image](ansible/images/infra_as_code.png)
 
 ---
 class: center, middle, inverse
 # What does it really mean?
-<!-- instructions, and procedures are in the head -->
-
----
-class: center, middle, inverse
-# Testing infrastructure with Ansible
 <!-- instructions, and procedures are in the head -->
 
 ---
@@ -52,6 +53,8 @@ By incorporating a degree of testing into your deployment workflow, there will b
 class: center, middle, inverse
 # Check Mode As A Drift Test
 If running a deployment playbook against an existing and live system, using the .red.bold[–check] flag
+![Default-aligned image](ansible/images/f8_large.jpg)
+
 <!--  –check mode in Ansible can be used as a layer of testing as well. If running a deployment playbook against an existing system, using the –check flag to the ansible command will report if Ansible thinks it would have had to have made any changes to bring the system into a desired state.
 	This can let you know up front if there is any need to deploy onto the given system. Ordinarily scripts and commands don’t run in check mode, so if you want certain steps to always execute in check mode, such as calls to the script module, add the ‘always_run’ flag:
 -->
@@ -110,7 +113,12 @@ class: center, middle, inverse
 ---
 class: center, middle, inverse
 # Rolling Updates pattern
-You can use success or failure of the playbook run to decide whether to add a machine into a load balancer or not
+![Default-aligned image](ansible/images/rolling_update.jpg)
+
+---
+class: center, middle, inverse
+
+#You can use success or failure of the playbook run to decide whether to add a machine into a load balancer or not
 .left[
 ```ruby
 - hosts: webservers
@@ -160,6 +168,7 @@ for testing
 ---
 class: center, middle, inverse
 # Wow, Continuous Deployment, can we do it?
+![Default-aligned image](ansible/images/cd.gif)
 
 ---
 class: center, middle, inverse
