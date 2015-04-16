@@ -115,7 +115,7 @@ In the event of a problem, fix the few servers that fail using Ansible’s autom
 
 ---
 class: center, middle, inverse
-# basic validation of your application in your playbooks will run .red[every time] you deploy.
+# basic validation of your application in your playbooks will run .red[every time] you deploy
 
 ---
 class: center, middle, inverse
