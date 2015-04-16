@@ -31,9 +31,23 @@ class: center, middle, inverse
 # Infrastructure as code makes it possible!
 ![Default-aligned image](ansible/images/infra_as_code.png)
 
+
 ---
 class: center, middle, inverse
 # What does it really mean?
+
+<!-- 
+Infrastructure as code, or programmable infrastructure, means writing code (which can be done using a high level language or any descriptive language) to manage configurations and automate provisioning of infrastructure in addition to deployments. This is not simply writing scripts, but involves using tested and proven software development practices that are already being used in application development. For example: version control, testing, small deployments, use of design patterns etc. In short, this means you write code to provision and manage your server, in addition to automating processes.
+-->
+
+---
+class: center, middle, inverse
+# It means
+## .red[version control]
+## .red[testing]
+## .red[small deployments]
+## use of design patterns
+## ...
 
 ---
 class: center, middle, inverse
@@ -48,6 +62,11 @@ class: center, middle, inverse
 By incorporating a degree of testing into your deployment workflow, there will be fewer surprises when code hits production and, in many cases, tests can be leveraged in production to prevent failed updates from migrating across an entire installation. Since it’s push-based, it’s also very easy to run the steps on the localhost or testing servers. Ansible lets you insert as many checks and balances into your upgrade workflow as you would like to have.
 
 -->
+---
+class: center, middle, inverse
+# “fail-fast” 
+## embed testing directly in Ansible playbooks
+
 ---
 class: center, middle, inverse
 # Check Mode As A Drift Test
@@ -71,41 +90,6 @@ class: center, middle, inverse
     that:
       - "'error' not in cmd_result.stderr"
 *- stat: path=/path/to/something
-```
-]
----
-class: center, middle, inverse
-# Absolutely .red[No Need] to check return codes of commands. 
-# Ansible is checking them automatically. 
-Rather than checking for a user to exist, consider using the user module to make it exist.
-
----
-class: center, middle, inverse
-# If writing some degree of basic validation of your application into your playbooks, they will run every time you deploy.
-
----
-class: center, middle, inverse
-# Testing Lifecycle
-.left[
-```ruby
-
-- Use the same playbook all the time with embedded tests in development
-- Use the playbook to deploy to a stage environment (with the same playbooks) 
-that simulates production
-- Run an integration test battery against stage
-- Deploy to production, with the same integrated tests.
-
-```
-]
-
----
-class: center, middle, inverse
-# Integration test battery?
-.left[
-```ruby
-- Selenium tests 
-- automated API tests 
-- anything that is not embedded into your Ansible playbooks!
 ```
 ]
 
@@ -146,10 +130,47 @@ class: center, middle, inverse
 ]
 
 <!--
-	In the above example, a script is run from the testing server against a remote node prior to bringing it back into the pool. what you can see from the above is that tests are used as a gate – if the “apply_testing_checks” step is not performed, the machine will not go back into the pool.
+  In the above example, a script is run from the testing server against a remote node prior to bringing it back into the pool. what you can see from the above is that tests are used as a gate – if the “apply_testing_checks” step is not performed, the machine will not go back into the pool.
 
 In the event of a problem, fix the few servers that fail using Ansible’s automatically generated retry file to repeat the deploy on just those servers.
-	-->
+  -->
+
+---
+class: center, middle, inverse
+# If writing some degree of basic validation of your application into your playbooks, they will run every time you deploy.
+
+
+---
+class: center, middle, inverse
+# Absolutely .red[No Need] to check return codes of commands 
+## .left[Ansible is checking them automatically]
+### .left[e.g., rather than checking for a user to exist, consider using the user module to make it exist]
+
+---
+class: center, middle, inverse
+# Testing Lifecycle
+.left[
+```ruby
+
+- Use the same playbook all the time with embedded tests in development
+- Use the playbook to deploy to a stage environment (with the same playbooks) 
+that simulates production
+- Run an integration test battery against stage
+- Deploy to production, with the same integrated tests.
+
+```
+]
+
+---
+class: center, middle, inverse
+# Integration test battery?
+.left[
+```ruby
+- Selenium tests 
+- automated API tests 
+- anything that is not embedded into your Ansible playbooks!
+```
+]
 
 ---
 class: center, middle, inverse
@@ -160,7 +181,8 @@ class: center, middle, inverse
 for testing
 - Have a CI system like Jenkins deploy to a stage environment on every code change
 - The deploy job calls testing scripts to pass/fail a build on every deploy
-- If the deploy job succeeds, it runs the same deploy playbook against production inventory
+- If the deploy job succeeds, it runs the same deploy playbook against production 
+inventory
 ```
 ]	
 
@@ -202,4 +224,8 @@ class: center, middle, inverse
 ---
 class: center, middle, inverse
 ![Default-aligned image](ansible/images/DevOps-with-Puppet-Chef-Ansible.jpg)
+
+---
+class: center, middle, inverse
+![Default-aligned image](ansible/images/calms-model.png)
 
