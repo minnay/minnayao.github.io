@@ -255,7 +255,7 @@ class: center, middle, inverse
 - Use the same playbook all the time with embedded tests in development
 - Use the playbook to deploy to a test environment (with the same playbooks) 
 that simulates production
-- Run integration/acceptance tests against test environments
+- Run integration/acceptance tests against test nodes
 - Deploy to production
 
 ```
