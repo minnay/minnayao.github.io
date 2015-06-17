@@ -60,6 +60,83 @@ class: center, middle, inverse
 
 ---
 class: center, middle, inverse
+# What is Ansible?
+## An ansible is a fictional machine capable of sending and receiving messages to and from a corresponding device over any distance whatsoever with no delay. Ansibles occur as plot devices in science fiction literature.
+
+---
+class: center, middle, inverse
+# What is Ansible?
+## controlling machines
+## nodes
+<!--
+As with most configuration management software, Ansible distinguishes two types of servers: controlling machines and nodes. First, there is a single controlling machine which is where orchestration begins. Nodes are managed by a controlling machine over SSH. The controlling machine describes the location of nodes through its inventory.
+  -->
+
+---
+class: center, middle, inverse
+# What is Ansible?
+## controlling machines
+## nodes
+
+---
+class: center, middle, inverse
+# Inventory of Ansible
+## a description of the nodes that can be accessed by Ansible
+## described by a configuration file
+
+---
+class: center, middle, inverse
+# Playbooks of Ansible
+## configurations
+## deployment
+## orchestration
+
+---
+class: center, middle, inverse
+# Playbooks of Ansible
+
+.left[
+```ruby
+minna.yml
+
+- hosts: webservers
+  remote_user: root
+  
+  tasks:
+    - name: test connection
+      ping:
+
+```
+]
+
+---
+class: center, middle, inverse
+# Run an Ansible playbook
+.left[
+```ruby
+
+$ ansible-playbook -i inventory minna.yml
+
+PLAY [tag_Purpose_cc_self_service_testing] ************************************
+
+GATHERING FACTS ***************************************************************
+ok: [10.181.51.32]
+
+TASK: [test connection] *******************************************************
+ok: [10.181.51.32]
+
+PLAY RECAP ********************************************************************
+10.181.51.32               : ok=2    changed=0    unreachable=0    failed=0
+
+```
+]
+
+---
+class: center, middle, inverse
+# Now let's talk about testing with Ansible
+
+---
+class: center, middle, inverse
 # "Test driven" provision/deployment
 <!-- There are many options. Ansible is actually designed to be a “fail-fast” and ordered system, therefore it makes it easy to embed testing directly in Ansible playbooks.
 
