@@ -66,17 +66,15 @@ class: center, middle, inverse
 ---
 class: center, middle, inverse
 # What is Ansible?
-## controlling machines
-## nodes
+.left[
+## It is a platform for configuring and managing computers
+## Architecture concept:
+## - controlling machines
+## - nodes
+]
 <!--
 As with most configuration management software, Ansible distinguishes two types of servers: controlling machines and nodes. First, there is a single controlling machine which is where orchestration begins. Nodes are managed by a controlling machine over SSH. The controlling machine describes the location of nodes through its inventory.
   -->
-
----
-class: center, middle, inverse
-# What is Ansible?
-## controlling machines
-## nodes
 
 ---
 class: center, middle, inverse
@@ -212,18 +210,6 @@ class: center, middle, inverse
 
 ---
 class: center, middle, inverse
-# Check Mode As A Drift Test
-If running a deployment playbook against an existing and live system, using the .red.bold[–check] flag
-![Default-aligned image](ansible/images/f8_large.jpg)
-
-<!--  –check mode in Ansible can be used as a layer of testing as well. If running a deployment playbook against an existing system, using the –check flag to the ansible command will report if Ansible thinks it would have had to have made any changes to bring the system into a desired state.
-	This can let you know up front if there is any need to deploy onto the given system. Ordinarily scripts and commands don’t run in check mode, so if you want certain steps to always execute in check mode, such as calls to the script module, add the ‘always_run’ flag:
-
-  https://t37.net/documenting-your-ansible-roles-interface-and-making-other-people-s-life-easier.html
--->
-
----
-class: center, middle, inverse
 # Absolutely .red[No Need] to check return codes of commands 
 ## .left[Ansible is checking them automatically]
 ### .left[e.g., rather than checking if a user exists, consider the user module to make it exist]
@@ -231,30 +217,34 @@ class: center, middle, inverse
 ---
 class: center, middle, inverse
 # What to test?
-One must keep satisfying popular requirements when thinking of test automation
+## One must keep satisfying popular requirements when thinking of test automation
 
 ---
 class: center, middle, inverse
 # What to test?
-For PLACOE, our goal is to provide:
-Stabl and reliable infrastructure
+## For BT Claims Platform team, our goal is to provide:
+## .red[Stable and reliable infrastructure]
 
 ---
 class: center, middle, inverse
 # What to test?
-# Inwards:
+.left[
+# .red[Inwards:]
 ## our infrastructure relies on:
-## external teams (AMI, bootstrap script...)
-## external systems
+## - external teams (AMI, bootstrap script...)
+## - external systems
 
-# Outwards:
-## self services
+# .red[Outwards:]
+## - self services
+]
 
 ---
 class: center, middle, inverse
 # What to test?
-## Tests for ensuring successful creation and termination of EC2 instances
-## Tests for ensuring reliable self services
+.left[
+## - Tests for ensuring successful creation and termination of EC2 instances
+## - Tests for ensuring reliable self services
+]
 
 ---
 class: center, middle, inverse
@@ -266,14 +256,14 @@ class: center, middle, inverse
 - Use the playbook to deploy to a test environment (with the same playbooks) 
 that simulates production
 - Run integration/acceptance tests against test environments
-- Deploy to production, with the same integrated tests.
+- Deploy to production
 
 ```
 ]
 
 ---
 class: center, middle, inverse
-# Integration test battery?
+# Integration/Acceptance tests?
 .left[
 ```ruby
 - Selenium tests 
@@ -325,7 +315,7 @@ class: center, middle, inverse
 ## some automated provision/deployment
 ## a little bit of automated tests
 ## fail safe environments ... eh?
-## repeatable everything ... eh?
+## almost repeatable everything
 
 ---
 class: center, middle, inverse
