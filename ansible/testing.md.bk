@@ -242,13 +242,13 @@ Stabl and reliable infrastructure
 ---
 class: center, middle, inverse
 # What to test?
-# Inwards:
-## our infrastructure relies on:
+Inwards:
+our infrastructure relies on:
 ## external teams (AMI, bootstrap script...)
 ## external systems
 
-# Outwards:
-## self services
+Outwards:
+# self services
 
 ---
 class: center, middle, inverse
