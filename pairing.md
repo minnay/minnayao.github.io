@@ -1,7 +1,7 @@
 class: center, middle, inverse
 
 # pairing
-.footnote[[[ThoughtWorks & Wotif]]()]
+.footnote[[[ThoughtWorks & Dominos]]()]
 
 <!-- it is primarily used in software development but can also be used in business analysis, writing documentation and etc. It can be used anywhere at all.  It is a very useful practice. Programming is often something that is done in solitude. Problem solving is something that often is done in a group.  Programming is always about problem solving. It would therefore be natural to do programming in groups. The group must not be too large and there must be at least two persons to make up a reasonable group. A pair turns out as the natural choice.
 
